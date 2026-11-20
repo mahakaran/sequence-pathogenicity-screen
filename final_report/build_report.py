@@ -820,9 +820,11 @@ def build():
              "which AlphaFold assembled an MSA of depth 1, meaning it found <i>no</i> homologous "
              "sequence anywhere in its databases and the alignment contains only the query "
              "itself. The confidence is therefore single-sequence prediction, not evolutionary "
-             "inference, and it independently reproduces the negative homology results of §1 "
+             "inference, and it is consistent with the negative homology results of §1 "
              "against a different set of databases. The three ORFs that did recruit some "
-             "alignment depth (6–32 sequences) are the three AlphaFold cannot fold. "
+             "alignment depth are the three AlphaFold cannot fold; that depth resolves to "
+             "between three and seven distinct proteins, aligned at twilight-zone identity, as "
+             "the text below sets out. "
              "(C) What the confident models actually are: ORF3 is 90% helical and ORF5 100% "
              "helical, both extended at ≈1.5 Å per residue — straight rods with no tertiary "
              "contacts. AlphaFold's own "
@@ -835,6 +837,60 @@ def build():
              "disordered at low confidence, and two are predicted, confidently, to be lone "
              "helices.")
     f += [P(
+        "Because AlphaFold's alignment depth is reported as a count of aligned <i>segments</i>, "
+        "and because three of the five ORFs did recruit some depth, it is worth establishing "
+        "what those alignments actually contain before treating them as evidence of homology. "
+        "The table below resolves each alignment into the number of distinct source proteins behind it, "
+        "together with the identity and coverage of the individual segments.", "body")]
+    f += [KeepTogether([P("What the AlphaFold alignments contain", "h3"), table([
+        ["ORF", "Segments", "Distinct proteins", "Identity", "Query coverage"],
+        ["ORF1", "31", "7", "25–34%", "35–71%"],
+        ["ORF2 (chain B)", "5", "3", "31–34%", "41–51%"],
+        ["ORF3", "0", "0", "—", "—"],
+        ["ORF4", "24", "6", "25–43%", "24–49%"],
+        ["ORF5", "0", "0", "—", "—"],
+    ], [104, 74, 112, 78, FRAME_W - 368])])]
+    f += [P(
+        "Four observations follow, and they compound. First, the segment counts "
+        "overstate the number of relatives by four- to fivefold: ORF1's thirty-one segments "
+        "derive from seven proteins and ORF4's twenty-four from six, because AlphaFold counts "
+        "every aligned region separately. Second, those segments are internal repeats of single "
+        "large proteins. Twelve of ORF4's segments come from one <i>Prymnesium parvum</i> "
+        "TIR-domain protein, at regularly spaced coordinates (350–383, 391–424, "
+        "473–506, and so on) each of exactly 34 columns; ORF1's two largest contributors "
+        "are salmon zonadhesins, themselves canonical repeat proteins, supplying ten and eight "
+        "segments respectively. The query is matching a motif "
+        "that recurs within one sequence, which is not the same thing as matching many "
+        "sequences.", "body")]
+    f += [P(
+        "Third, the alignments sit squarely in the twilight zone, at 25–43% identity over "
+        "24–71% of the query. This is the region in which alignments arise between "
+        "unrelated sequences of similar composition, and it is precisely why jackhmmer, whose "
+        "inclusion threshold (E &lt; 0.001) exists to exclude such cases, admitted none of them "
+        "in five iterations. Fourth, ORF1 is compositionally skewed (Shannon entropy 3.09 bits "
+        "against a maximum of 4.32, with I, N, S, T and F accounting for 76% of its residues), "
+        "and low-complexity sequence finds spurious partners in repeat-rich proteins as a matter "
+        "of routine.", "body")]
+    f += [P(
+        "A fifth observation settles the matter. The ORF2 job carried a duplicate of ORF1 as its "
+        "chain A, and that chain returned an alignment identical to ORF1's own — the same "
+        "thirty-one segments from the same seven proteins. The alignment therefore tracks which "
+        "sequence was submitted, reproducibly, while ORF2's own chain B recruited five segments "
+        "from three proteins. Taken together, these results indicate that AlphaFold found no "
+        "homologue clearing any reasonable threshold for <i>any</i> of the five ORFs: an "
+        "alignment of depth 1 for ORF3 and ORF5, and for the remaining three a handful of "
+        "twilight-zone fragments of repeat proteins, which is what a permissive database search "
+        "returns when there is no relative to be found.", "body")]
+    f += [P(
+        "One qualification is required. AlphaFold's alignment pipeline is deliberately "
+        "permissive, admitting weak hits because even a poor alignment occasionally supplies "
+        "usable coupling signal; it is not a homology test and was never calibrated as one. The "
+        "alignment result is therefore properly read as <i>consistent with</i> the four "
+        "threshold-based searches of §1 rather than as a fifth independent one. Its value "
+        "lies in the fact that it was run against different databases, and still recovered "
+        "nothing that survives inspection.", "body")]
+
+    f += [P(
         "Foldseek was not run, and on this evidence it would not be informative." + c("vankempen2024") + " Foldseek "
         "matches tertiary folds, and the only two models with usable confidence have no "
         "tertiary structure to match — a single helix is the most common local motif in the PDB "
@@ -845,9 +901,11 @@ def build():
         "gap in coverage rather than a closed question, and it is carried into §9.", "body")]
     f += [P(
         "The structural result converges with every other line of evidence and adds one new "
-        "observation. The convergence: AlphaFold's inability to find a single homolog for ORF3 "
-        "and ORF5 is a fourth independent negative homology search, run against different "
-        "databases from BLASTn, DIAMOND and jackhmmer. The new observation: the two peptides "
+        "observation. The convergence: AlphaFold recovered no homologue surviving inspection "
+        "for any of the five ORFs, searching databases different from those used by BLASTn, "
+        "DIAMOND and jackhmmer. Because its alignment pipeline is permissive rather than "
+        "threshold-based, this corroborates the searches of §1 rather than constituting a "
+        "fifth independent one. The new observation: the two peptides "
         "that are confidently modelled are a hydrophobic transmembrane-like helix (ORF5) and a "
         "short polar helix (ORF3), which is a structural character consistent with the "
         "compositional extremes already noted in §3 and §4, and is the kind of sequence that "
@@ -959,15 +1017,16 @@ def build():
         "the evidence is that it shows no signature of pathogenicity, and no signature of "
         "natural origin either.</b>", "key")]
     f += [P(
-        "Eight independent lines of evidence converge upon this conclusion. The sequence "
+        "Eight lines of evidence converge upon this conclusion, seven of them independent. The sequence "
         "returns no BLASTn hit, no Kraken2 classification in either of two databases (0 of 254 "
         "k-mers), no DIAMOND alignment to Swiss-Prot or to VFDB, and no jackhmmer profile "
         "recruitment over five iterations. Its nearest neighbours in protein language-model "
         "embedding space are explicable by length and composition alone, and none of them "
         "aligns to it. Its encoded peptides score as no more protein-like than their own "
-        "shuffled residues. AlphaFold 3 independently finds no homologue for the two peptides "
-        "it is able to model confidently (an MSA of depth 1, which is to say the query alone), "
-        "and predicts no folded domain for any of the five.", "body")]
+        "shuffled residues. AlphaFold 3, searching databases of its own, recovers no homologue "
+        "surviving inspection for any of the five: an alignment of depth 1 for the two peptides "
+        "it models confidently, and for the remaining three only twilight-zone fragments of "
+        "repeat proteins. It predicts no folded domain for any of them.", "body")]
     f += [P(
         "Against this uniformly negative background, the codon analysis supplies the one "
         "positive finding, and it proves to be the decisive one. ORF4 employs exactly one codon "

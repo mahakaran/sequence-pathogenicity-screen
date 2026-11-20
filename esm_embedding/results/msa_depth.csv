@@ -1,0 +1,7 @@
+orf,chain,segments,proteins,top_source_share,ident_min,ident_max,cov_min,cov_max,query_entropy_bits
+orf1,a,31,7,,25,34,35,71,3.09
+orf2,a,31,7,,25,34,35,71,3.09
+orf2,b,5,3,,31,34,41,51,3.68
+orf3,a,0,0,,,,,,
+orf4,a,24,6,,25,43,24,49,3.93
+orf5,a,0,0,,,,,,

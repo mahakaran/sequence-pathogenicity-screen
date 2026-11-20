@@ -10,6 +10,7 @@ Usage:  python af3_figure.py
 """
 
 import glob
+import re
 import json
 import math
 import statistics as st
@@ -70,10 +71,40 @@ def helix_frac(ca):
 
 
 def msa_depth(orf, chain):
+    """Aligned segments, including the query row (AF3's own 'depth')."""
     n = 0
     for f in glob.glob(f"{AF}/{orf}/msas/*chains_{chain.lower()}.a3m"):
         n = max(n, sum(1 for ln in open(f) if ln.startswith(">")))
     return n
+
+
+def accession(header):
+    """Bare accession from an a3m header, regardless of database spelling.
+
+    AF3 writes the same protein two ways: 'UniRef90_G4YP12/40-107' in the
+    unpaired file and 'tr|G4YP12|G4YP12_PHYSP/40-107' in the paired one. Without
+    normalising, a union over both files counts every hit twice.
+    """
+    tok = header.lstrip(">").split()[0]
+    tok = re.sub(r"/\d+-\d+.*$", "", tok)
+    if "|" in tok:                       # tr|ACC|NAME  or  sp|ACC|NAME
+        parts = tok.split("|")
+        return parts[1] if len(parts) > 1 else tok
+    return re.sub(r"^UniRef\d+_", "", tok)
+
+
+def msa_proteins(orf, chain):
+    """Distinct SOURCE PROTEINS behind those segments.
+
+    AF3 reports a count of aligned regions, not of relatives: one repeat protein
+    can contribute ten segments, and the paired file re-lists the unpaired hits.
+    Collapsing to distinct accessions is what the depth actually means.
+    """
+    srcs = set()
+    for f in glob.glob(f"{AF}/{orf}/msas/*chains_{chain.lower()}.a3m"):
+        heads = [ln.strip() for ln in open(f) if ln.startswith(">")][1:]
+        srcs |= {accession(h) for h in heads}
+    return len(srcs)
 
 
 def collect():
@@ -94,6 +125,7 @@ def collect():
             "mean": st.mean(pl0),
             "ptm": s["ptm"], "disorder": s["fraction_disordered"],
             "msa": msa_depth(orf, ch),
+            "msa_prot": msa_proteins(orf, ch),
             "helix": helix_frac(ca0),
             "rg": math.sqrt(st.mean([math.dist(p, cen) ** 2 for p in pts])),
             "e2e": math.dist(pts[0], pts[-1]),
@@ -164,7 +196,7 @@ def main():
     # ---- B: mean pLDDT vs MSA depth --------------------------------------
     style(axB)
     for orf in names:
-        x = max(d[orf]["msa"], 1)
+        x = max(d[orf]["msa_prot"], 1)
         axB.scatter([x], [d[orf]["mean"]], s=230, color=ORF_C[orf],
                     edgecolors="white", linewidths=1.6, zorder=5)
         # ORF3 and ORF5 both sit at MSA depth 1 and within 6 pLDDT of each other
@@ -184,7 +216,7 @@ def main():
     axB.set_ylim(0, 105)
     axB.set_xticks([1, 2, 5, 10, 20, 50])
     axB.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
-    axB.set_xlabel("MSA depth (sequences found, including the query)",
+    axB.set_xlabel("distinct source proteins in the MSA (1 = query only)",
                    fontsize=10.5, color=INK_2)
     axB.set_ylabel("mean pLDDT", fontsize=10.5, color=INK_2)
     axB.set_title("B · Confidence against homolog count", loc="left",
@@ -219,7 +251,7 @@ def main():
     # below lands on whatever autoscale picks and overruns the panels above
     axD.set_xlim(0, 1)
     axD.set_ylim(0, 1)
-    cols = ["ORF", "Len", "MSA depth", "Mean pLDDT", "Residues >70", "pTM",
+    cols = ["ORF", "Len", "Proteins (segs)", "Mean pLDDT", "Residues >70", "pTM",
             "Fraction disordered", "Helical frac", "Interpretation"]
     wid = [0.055, 0.042, 0.082, 0.085, 0.092, 0.050, 0.120, 0.082, 0.392]
     xs, acc = [], 0.0
@@ -241,7 +273,7 @@ def main():
     for orf in names:
         v = d[orf]
         n70 = sum(1 for p in v["plddt"][0] if p > 70)
-        cells = [orf, str(v["L"]), str(v["msa"]), f"{v['mean']:.1f}",
+        cells = [orf, str(v["L"]), f"{v['msa_prot']} ({v['msa']})", f"{v['mean']:.1f}",
                  f"{n70}/{v['L']}", f"{v['ptm']:.2f}", f"{v['disorder']:.2f}",
                  f"{v['helix']:.2f}", INTERP[orf]]
         for i, (x, cell) in enumerate(zip(xs, cells)):

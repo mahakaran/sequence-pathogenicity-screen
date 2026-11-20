@@ -42,7 +42,7 @@ EVIDENCE = [
     ("BLASTn", "NCBI nt, E ≤ 1000", "0 hits"),
     ("DIAMOND blastp", "Swiss-Prot, 569,192 proteins", "0 hits"),
     ("jackhmmer ×5", "Swiss-Prot, profile search", "0 recruited"),
-    ("AlphaFold 3 MSA", "AF3 databases", "0 homologs"),
+    ("AlphaFold 3 MSA", "AF3 databases", "none survive"),
     ("Kraken2 ×2 DBs", "Standard-8 + PlusPF-8", "0 / 254 k-mers"),
     ("DIAMOND vs VFDB", "4,755 virulence factors", "0 hits"),
 ]
