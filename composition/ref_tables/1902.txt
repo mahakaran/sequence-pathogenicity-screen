@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>Codon usage table</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#F0F0F0">
+<STRONG><i>Streptomyces coelicolor </i>[gbbct]: 66 CDS's (22208 codons)</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+fields: [triplet] [amino acid] [fraction] [frequency: <STRONG>per thousand</STRONG>] ([number])
+<HR ALIGN="LEFT" SIZE=1>
+<PRE>
+UUU F 0.03  0.7 (    16)  UCU S 0.01  0.6 (    13)  UAU Y 0.05  1.1 (    24)  UGU C 0.06  0.5 (    10)
+UUC F 0.97 25.1 (   557)  UCC S 0.43 21.3 (   472)  UAC Y 0.95 21.5 (   477)  UGC C 0.94  7.2 (   161)
+UUA L 0.00  0.1 (     3)  UCA S 0.01  0.7 (    16)  UAA * 0.05  0.1 (     3)  UGA * 0.73  2.2 (    48)
+UUG L 0.03  2.6 (    57)  UCG S 0.31 15.4 (   341)  UAG * 0.23  0.7 (    15)  UGG W 1.00 13.9 (   308)
+
+CUU L 0.02  1.9 (    42)  CCU P 0.02  1.1 (    24)  CAU H 0.06  1.5 (    33)  CGU R 0.07  5.7 (   126)
+CUC L 0.34 32.2 (   715)  CCC P 0.39 24.5 (   545)  CAC H 0.94 21.9 (   486)  CGC R 0.49 42.7 (   948)
+CUA L 0.00  0.3 (     7)  CCA P 0.02  1.2 (    26)  CAA Q 0.06  1.8 (    41)  CGA R 0.03  2.5 (    55)
+CUG L 0.61 58.6 (  1302)  CCG P 0.57 36.1 (   802)  CAG Q 0.94 28.1 (   625)  CGG R 0.35 30.2 (   670)
+
+AUU I 0.03  0.8 (    18)  ACU T 0.02  1.1 (    25)  AAU N 0.03  0.5 (    11)  AGU S 0.02  1.2 (    27)
+AUC I 0.95 28.9 (   642)  ACC T 0.63 38.9 (   864)  AAC N 0.97 18.2 (   405)  AGC S 0.21 10.6 (   236)
+AUA I 0.02  0.6 (    14)  ACA T 0.02  1.2 (    27)  AAA K 0.06  1.3 (    28)  AGA R 0.01  0.9 (    19)
+AUG M 1.00 16.9 (   376)  ACG T 0.33 20.0 (   445)  AAG K 0.94 21.3 (   473)  AGG R 0.05  4.6 (   102)
+
+GUU V 0.02  1.9 (    42)  GCU A 0.02  2.7 (    61)  GAU D 0.04  2.2 (    49)  GGU G 0.10  8.8 (   196)
+GUC V 0.58 48.4 (  1075)  GCC A 0.57 76.6 (  1702)  GAC D 0.96 59.2 (  1314)  GGC G 0.67 60.9 (  1353)
+GUA V 0.03  2.8 (    63)  GCA A 0.04  5.1 (   113)  GAA E 0.17 10.3 (   229)  GGA G 0.07  6.2 (   138)
+GUG V 0.36 30.3 (   673)  GCG A 0.37 49.0 (  1088)  GAG E 0.83 49.9 (  1108)  GGG G 0.16 14.6 (   324)
+</PRE>
+<HR ALIGN="LEFT" SIZE=1>
+Coding GC 71.93%
+1st letter GC 71.93%
+2nd letter GC 50.82%
+3rd letter GC 93.03%<BR>
+<STRONG>Genetic code 1: Standard</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="./showcodon.cgi" METHOD="GET">
+
+<STRONG>Format:</STRONG><BR>
+
+<!-- INPUT TYPE="HIDDEN" NAME="species" VALUE="Streptomyces coelicolor [gbbct]" -->
+<INPUT TYPE="HIDDEN" NAME="species" VALUE="1902">
+
+<SELECT NAME="aa">
+<OPTION SELECTED>SELECT A CODE
+<OPTION VALUE="1">1: Standard
+<OPTION VALUE="2">2: Vertebrate Mitochondrial
+<OPTION VALUE="3">3: Yeast Mitochondrial
+<OPTION VALUE="4">4: Mold, Protozoan, Coelenterate Mitochondrial
+<OPTION VALUE="4">(4:)	and Mycoplasma/Spiroplasma
+<OPTION VALUE="5">5: Invertebrate Mitochondrial
+<OPTION VALUE="6">6: Ciliate Macronuclear and Dasycladacean
+<OPTION VALUE="9">9: Echinoderm Mitochondrial
+<OPTION VALUE="10">10: Alternative Ciliate Macronuclear
+<OPTION VALUE="11">11: Eubacterial
+<OPTION VALUE="12">12: Alternative Yeast
+<OPTION VALUE="13">13: Ascidian Mitochondrial
+<OPTION VALUE="14">14: Flatworm Mitochondrial
+<OPTION VALUE="15">15: Blepharisma Nuclear Code
+</SELECT>
+
+<A HREF = "http://www3.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wprintgc?mode=t">
+Genetic codes (NCBI)</A>
+
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="N" CHECKED>
+<!-- INPUT TYPE="hidden" NAME="style" VALUE="N" -->
+Codon Usage Table with Amino Acids
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="GCG">
+A style like CodonFrequency output in GCG <A HREF="http://www.gcg.com/products/software.html">Wisconsin Package<SUP>TM</SUP></A>
+
+<BR>
+
+<!-- INPUT TYPE="radio" NAME="style" VALUE="BT")Back translation (comming soon)
+(BR)
+(TEXTAREA NAME="aa_src" ROWS="2" COLS="60")(/TEXTAREA)
+(P -->
+<INPUT TYPE=SUBMIT VALUE="Submit">
+</FORM>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="srchcds.cgi" METHOD="POST">
+
+<STRONG>CDS Search:</STRONG><BR>
+
+<INPUT SIZE="40" TYPE="TEXT" NAME="key">
+<INPUT TYPE=SUBMIT VALUE="Submit">
+
+<INPUT TYPE="HIDDEN" NAME="abbrev" VALUE="1902">
+<INPUT TYPE="HIDDEN" NAME="entry" VALUE="bct">
+<INPUT TYPE="HIDDEN" NAME="sponly" VALUE="Streptomyces coelicolor">
+
+<BR>
+
+Keyword example: ribosomal protein / MAP kinase
+
+</FORM>
+
+<!-- A HREF="ftp://ftp.kazusa.or.jp/pub/codon/current/species/1902.bct" -->
+<A HREF="http://www.kazusa.or.jp/codon/current/species/1902">
+List of codon usage for each CDS 
+</A> 
+<A HREF="http://www.kazusa.or.jp/codon/current/CODON_LABEL">
+(format)
+</A>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<I><A HREF= "/codon/">Homepage</A></I>
+
+</BODY>
+</HTML>

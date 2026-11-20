@@ -1,0 +1,11 @@
+torch
+transformers
+numpy
+pandas
+pyarrow
+biopython
+onnxruntime
+umap-learn
+matplotlib
+faiss-cpu
+reportlab

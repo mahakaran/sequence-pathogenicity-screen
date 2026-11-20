@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>Codon usage table</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#F0F0F0">
+<STRONG><i>Candida albicans </i>[gbpln]: 1148 CDS's (635617 codons)</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+fields: [triplet] [amino acid] [fraction] [frequency: <STRONG>per thousand</STRONG>] ([number])
+<HR ALIGN="LEFT" SIZE=1>
+<PRE>
+UUU F 0.66 29.8 ( 18958)  UCU S 0.25 22.0 ( 13984)  UAU Y 0.71 25.4 ( 16146)  UGU C 0.84  9.4 (  5964)
+UUC F 0.34 15.6 (  9899)  UCC S 0.11  9.7 (  6145)  UAC Y 0.29 10.4 (  6614)  UGC C 0.16  1.8 (  1135)
+UUA L 0.40 36.1 ( 22928)  UCA S 0.30 26.4 ( 16751)  UAA * 0.55  1.0 (   632)  UGA * 0.16  0.3 (   180)
+UUG L 0.38 34.6 ( 21993)  UCG S 0.08  6.8 (  4341)  UAG * 0.29  0.5 (   336)  UGG W 1.00 10.9 (  6942)
+
+CUU L 0.11 10.2 (  6456)  CCU P 0.29 13.4 (  8495)  CAU H 0.72 14.7 (  9373)  CGU R 0.16  6.0 (  3791)
+CUC L 0.03  2.6 (  1636)  CCC P 0.09  4.2 (  2665)  CAC H 0.28  5.6 (  3578)  CGC R 0.02  0.8 (   523)
+CUA L 0.05  4.4 (  2782)  CCA P 0.56 26.3 ( 16709)  CAA Q 0.85 35.7 ( 22696)  CGA R 0.11  4.1 (  2604)
+CUG L 0.04  3.5 (  2201)  CCG P 0.06  2.7 (  1721)  CAG Q 0.15  6.5 (  4163)  CGG R 0.03  1.0 (   604)
+
+AUU I 0.59 40.5 ( 25761)  ACU T 0.46 30.6 ( 19438)  AAU N 0.70 42.7 ( 27162)  AGU S 0.20 17.5 ( 11094)
+AUC I 0.20 13.5 (  8590)  ACC T 0.20 13.5 (  8567)  AAC N 0.30 18.2 ( 11560)  AGC S 0.05  4.6 (  2955)
+AUA I 0.21 14.4 (  9127)  ACA T 0.28 18.8 ( 11928)  AAA K 0.73 49.0 ( 31114)  AGA R 0.60 21.7 ( 13817)
+AUG M 1.00 18.2 ( 11591)  ACG T 0.06  3.9 (  2501)  AAG K 0.27 18.3 ( 11660)  AGG R 0.08  2.9 (  1834)
+
+GUU V 0.52 30.1 ( 19155)  GCU A 0.48 27.4 ( 17393)  GAU D 0.76 43.7 ( 27797)  GGU G 0.53 29.2 ( 18556)
+GUC V 0.16  9.1 (  5773)  GCC A 0.21 11.7 (  7453)  GAC D 0.24 13.4 (  8545)  GGC G 0.08  4.4 (  2818)
+GUA V 0.15  8.6 (  5460)  GCA A 0.28 16.0 ( 10162)  GAA E 0.81 49.9 ( 31701)  GGA G 0.25 13.7 (  8710)
+GUG V 0.18 10.4 (  6612)  GCG A 0.04  2.1 (  1346)  GAG E 0.19 11.9 (  7547)  GGG G 0.14  7.8 (  4945)
+</PRE>
+<HR ALIGN="LEFT" SIZE=1>
+Coding GC 36.12%
+1st letter GC 43.10%
+2nd letter GC 37.14%
+3rd letter GC 28.13%<BR>
+<STRONG>Genetic code 1: Standard</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="./showcodon.cgi" METHOD="GET">
+
+<STRONG>Format:</STRONG><BR>
+
+<!-- INPUT TYPE="HIDDEN" NAME="species" VALUE="Candida albicans [gbpln]" -->
+<INPUT TYPE="HIDDEN" NAME="species" VALUE="5476">
+
+<SELECT NAME="aa">
+<OPTION SELECTED>SELECT A CODE
+<OPTION VALUE="1">1: Standard
+<OPTION VALUE="2">2: Vertebrate Mitochondrial
+<OPTION VALUE="3">3: Yeast Mitochondrial
+<OPTION VALUE="4">4: Mold, Protozoan, Coelenterate Mitochondrial
+<OPTION VALUE="4">(4:)	and Mycoplasma/Spiroplasma
+<OPTION VALUE="5">5: Invertebrate Mitochondrial
+<OPTION VALUE="6">6: Ciliate Macronuclear and Dasycladacean
+<OPTION VALUE="9">9: Echinoderm Mitochondrial
+<OPTION VALUE="10">10: Alternative Ciliate Macronuclear
+<OPTION VALUE="11">11: Eubacterial
+<OPTION VALUE="12">12: Alternative Yeast
+<OPTION VALUE="13">13: Ascidian Mitochondrial
+<OPTION VALUE="14">14: Flatworm Mitochondrial
+<OPTION VALUE="15">15: Blepharisma Nuclear Code
+</SELECT>
+
+<A HREF = "http://www3.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wprintgc?mode=t">
+Genetic codes (NCBI)</A>
+
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="N" CHECKED>
+<!-- INPUT TYPE="hidden" NAME="style" VALUE="N" -->
+Codon Usage Table with Amino Acids
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="GCG">
+A style like CodonFrequency output in GCG <A HREF="http://www.gcg.com/products/software.html">Wisconsin Package<SUP>TM</SUP></A>
+
+<BR>
+
+<!-- INPUT TYPE="radio" NAME="style" VALUE="BT")Back translation (comming soon)
+(BR)
+(TEXTAREA NAME="aa_src" ROWS="2" COLS="60")(/TEXTAREA)
+(P -->
+<INPUT TYPE=SUBMIT VALUE="Submit">
+</FORM>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="srchcds.cgi" METHOD="POST">
+
+<STRONG>CDS Search:</STRONG><BR>
+
+<INPUT SIZE="40" TYPE="TEXT" NAME="key">
+<INPUT TYPE=SUBMIT VALUE="Submit">
+
+<INPUT TYPE="HIDDEN" NAME="abbrev" VALUE="5476">
+<INPUT TYPE="HIDDEN" NAME="entry" VALUE="pln">
+<INPUT TYPE="HIDDEN" NAME="sponly" VALUE="Candida albicans">
+
+<BR>
+
+Keyword example: ribosomal protein / MAP kinase
+
+</FORM>
+
+<!-- A HREF="ftp://ftp.kazusa.or.jp/pub/codon/current/species/5476.pln" -->
+<A HREF="http://www.kazusa.or.jp/codon/current/species/5476">
+List of codon usage for each CDS 
+</A>
+[CAUTION: The file is big (> 1000 entries).]
+ 
+<A HREF="http://www.kazusa.or.jp/codon/current/CODON_LABEL">
+(format)
+</A>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<I><A HREF= "/codon/">Homepage</A></I>
+
+</BODY>
+</HTML>

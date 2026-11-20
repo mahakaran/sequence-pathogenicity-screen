@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>Codon usage table</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#F0F0F0">
+<STRONG><i>Arabidopsis thaliana </i>[gbpln]: 80395 CDS's (31098475 codons)</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+fields: [triplet] [amino acid] [fraction] [frequency: <STRONG>per thousand</STRONG>] ([number])
+<HR ALIGN="LEFT" SIZE=1>
+<PRE>
+UUU F 0.51 21.8 (678320)  UCU S 0.28 25.2 (782818)  UAU Y 0.52 14.6 (455089)  UGU C 0.60 10.5 (327640)
+UUC F 0.49 20.7 (642407)  UCC S 0.13 11.2 (348173)  UAC Y 0.48 13.7 (427132)  UGC C 0.40  7.2 (222769)
+UUA L 0.14 12.7 (394867)  UCA S 0.20 18.3 (568570)  UAA * 0.36  0.9 ( 29405)  UGA * 0.44  1.2 ( 36260)
+UUG L 0.22 20.9 (649150)  UCG S 0.10  9.3 (290158)  UAG * 0.20  0.5 ( 16417)  UGG W 1.00 12.5 (388049)
+
+CUU L 0.26 24.1 (750114)  CCU P 0.38 18.7 (580962)  CAU H 0.61 13.8 (428694)  CGU R 0.17  9.0 (280392)
+CUC L 0.17 16.1 (500524)  CCC P 0.11  5.3 (165252)  CAC H 0.39  8.7 (271155)  CGC R 0.07  3.8 (117543)
+CUA L 0.11  9.9 (307000)  CCA P 0.33 16.1 (502101)  CAA Q 0.56 19.4 (604800)  CGA R 0.12  6.3 (195736)
+CUG L 0.11  9.8 (305822)  CCG P 0.18  8.6 (268115)  CAG Q 0.44 15.2 (473809)  CGG R 0.09  4.9 (151572)
+
+AUU I 0.41 21.5 (668227)  ACU T 0.34 17.5 (544807)  AAU N 0.52 22.3 (693344)  AGU S 0.16 14.0 (435738)
+AUC I 0.35 18.5 (576287)  ACC T 0.20 10.3 (321640)  AAC N 0.48 20.9 (650826)  AGC S 0.13 11.3 (352568)
+AUA I 0.24 12.6 (391867)  ACA T 0.31 15.7 (487161)  AAA K 0.49 30.8 (957374)  AGA R 0.35 19.0 (589788)
+AUG M 1.00 24.5 (762852)  ACG T 0.15  7.7 (240652)  AAG K 0.51 32.7 (1016176)  AGG R 0.20 11.0 (340922)
+
+GUU V 0.40 27.2 (847061)  GCU A 0.43 28.3 (880808)  GAU D 0.68 36.6 (1139637)  GGU G 0.34 22.2 (689891)
+GUC V 0.19 12.8 (397008)  GCC A 0.16 10.3 (321500)  GAC D 0.32 17.2 (535668)  GGC G 0.14  9.2 (284681)
+GUA V 0.15  9.9 (308605)  GCA A 0.27 17.5 (543180)  GAA E 0.52 34.3 (1068012)  GGA G 0.37 24.2 (751489)
+GUG V 0.26 17.4 (539873)  GCG A 0.14  9.0 (280804)  GAG E 0.48 32.2 (1002594)  GGG G 0.16 10.2 (316620)
+</PRE>
+<HR ALIGN="LEFT" SIZE=1>
+Coding GC 44.59%
+1st letter GC 50.84%
+2nd letter GC 40.54%
+3rd letter GC 42.38%<BR>
+<STRONG>Genetic code 1: Standard</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="./showcodon.cgi" METHOD="GET">
+
+<STRONG>Format:</STRONG><BR>
+
+<!-- INPUT TYPE="HIDDEN" NAME="species" VALUE="Arabidopsis thaliana [gbpln]" -->
+<INPUT TYPE="HIDDEN" NAME="species" VALUE="3702">
+
+<SELECT NAME="aa">
+<OPTION SELECTED>SELECT A CODE
+<OPTION VALUE="1">1: Standard
+<OPTION VALUE="2">2: Vertebrate Mitochondrial
+<OPTION VALUE="3">3: Yeast Mitochondrial
+<OPTION VALUE="4">4: Mold, Protozoan, Coelenterate Mitochondrial
+<OPTION VALUE="4">(4:)	and Mycoplasma/Spiroplasma
+<OPTION VALUE="5">5: Invertebrate Mitochondrial
+<OPTION VALUE="6">6: Ciliate Macronuclear and Dasycladacean
+<OPTION VALUE="9">9: Echinoderm Mitochondrial
+<OPTION VALUE="10">10: Alternative Ciliate Macronuclear
+<OPTION VALUE="11">11: Eubacterial
+<OPTION VALUE="12">12: Alternative Yeast
+<OPTION VALUE="13">13: Ascidian Mitochondrial
+<OPTION VALUE="14">14: Flatworm Mitochondrial
+<OPTION VALUE="15">15: Blepharisma Nuclear Code
+</SELECT>
+
+<A HREF = "http://www3.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wprintgc?mode=t">
+Genetic codes (NCBI)</A>
+
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="N" CHECKED>
+<!-- INPUT TYPE="hidden" NAME="style" VALUE="N" -->
+Codon Usage Table with Amino Acids
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="GCG">
+A style like CodonFrequency output in GCG <A HREF="http://www.gcg.com/products/software.html">Wisconsin Package<SUP>TM</SUP></A>
+
+<BR>
+
+<!-- INPUT TYPE="radio" NAME="style" VALUE="BT")Back translation (comming soon)
+(BR)
+(TEXTAREA NAME="aa_src" ROWS="2" COLS="60")(/TEXTAREA)
+(P -->
+<INPUT TYPE=SUBMIT VALUE="Submit">
+</FORM>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="srchcds.cgi" METHOD="POST">
+
+<STRONG>CDS Search:</STRONG><BR>
+
+<INPUT SIZE="40" TYPE="TEXT" NAME="key">
+<INPUT TYPE=SUBMIT VALUE="Submit">
+
+<INPUT TYPE="HIDDEN" NAME="abbrev" VALUE="3702">
+<INPUT TYPE="HIDDEN" NAME="entry" VALUE="pln">
+<INPUT TYPE="HIDDEN" NAME="sponly" VALUE="Arabidopsis thaliana">
+
+<BR>
+
+Keyword example: ribosomal protein / MAP kinase
+
+</FORM>
+
+<!-- A HREF="ftp://ftp.kazusa.or.jp/pub/codon/current/species/3702.pln" -->
+<A HREF="http://www.kazusa.or.jp/codon/current/species/3702">
+List of codon usage for each CDS 
+</A>
+[CAUTION: The file is big (> 1000 entries).]
+ 
+<A HREF="http://www.kazusa.or.jp/codon/current/CODON_LABEL">
+(format)
+</A>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<I><A HREF= "/codon/">Homepage</A></I>
+
+</BODY>
+</HTML>

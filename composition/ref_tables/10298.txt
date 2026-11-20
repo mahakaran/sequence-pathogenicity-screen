@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>Codon usage table</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#F0F0F0">
+<STRONG><i>Human herpesvirus 1 </i>[gbvrl]: 1111 CDS's (355849 codons)</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+fields: [triplet] [amino acid] [fraction] [frequency: <STRONG>per thousand</STRONG>] ([number])
+<HR ALIGN="LEFT" SIZE=1>
+<PRE>
+UUU F 0.52 15.0 (  5351)  UCU S 0.07  4.3 (  1537)  UAU Y 0.20  5.3 (  1871)  UGU C 0.39  6.8 (  2429)
+UUC F 0.48 14.0 (  4985)  UCC S 0.30 19.0 (  6752)  UAC Y 0.80 20.9 (  7436)  UGC C 0.61 10.9 (  3875)
+UUA L 0.02  2.3 (   831)  UCA S 0.04  2.2 (   799)  UAA * 0.29  0.9 (   320)  UGA * 0.23  0.7 (   258)
+UUG L 0.12 11.2 (  3986)  UCG S 0.25 15.9 (  5664)  UAG * 0.48  1.5 (   531)  UGG W 1.00 11.5 (  4086)
+
+CUU L 0.10  9.6 (  3412)  CCU P 0.07  6.9 (  2470)  CAU H 0.32  8.9 (  3152)  CGU R 0.12  8.7 (  3103)
+CUC L 0.20 19.2 (  6817)  CCC P 0.54 53.0 ( 18861)  CAC H 0.68 19.2 (  6833)  CGC R 0.46 34.7 ( 12365)
+CUA L 0.05  4.4 (  1554)  CCA P 0.12 11.4 (  4059)  CAA Q 0.25  7.6 (  2702)  CGA R 0.09  6.8 (  2432)
+CUG L 0.50 47.0 ( 16721)  CCG P 0.27 26.0 (  9251)  CAG Q 0.75 23.1 (  8218)  CGG R 0.26 19.5 (  6950)
+
+AUU I 0.27  9.2 (  3284)  ACU T 0.05  3.8 (  1357)  AAU N 0.12  2.7 (   950)  AGU S 0.05  3.4 (  1197)
+AUC I 0.61 21.1 (  7526)  ACC T 0.55 41.9 ( 14913)  AAC N 0.88 19.1 (  6794)  AGC S 0.29 18.3 (  6505)
+AUA I 0.12  4.2 (  1485)  ACA T 0.09  7.0 (  2488)  AAA K 0.33  5.8 (  2058)  AGA R 0.02  1.8 (   625)
+AUG M 1.00 19.5 (  6939)  ACG T 0.30 22.8 (  8123)  AAG K 0.67 11.6 (  4124)  AGG R 0.04  3.3 (  1167)
+
+GUU V 0.15 10.6 (  3781)  GCU A 0.05  6.0 (  2130)  GAU D 0.16  7.3 (  2600)  GGU G 0.10  8.0 (  2833)
+GUC V 0.35 25.4 (  9038)  GCC A 0.56 61.3 ( 21807)  GAC D 0.84 39.0 ( 13881)  GGC G 0.36 29.1 ( 10342)
+GUA V 0.10  7.1 (  2532)  GCA A 0.07  7.2 (  2572)  GAA E 0.23 10.9 (  3889)  GGA G 0.10  7.9 (  2822)
+GUG V 0.40 28.7 ( 10220)  GCG A 0.32 35.2 ( 12529)  GAG E 0.77 36.1 ( 12840)  GGG G 0.45 36.2 ( 12887)
+</PRE>
+<HR ALIGN="LEFT" SIZE=1>
+Coding GC 66.30%
+1st letter GC 66.21%
+2nd letter GC 53.17%
+3rd letter GC 79.52%<BR>
+<STRONG>Genetic code 1: Standard</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="./showcodon.cgi" METHOD="GET">
+
+<STRONG>Format:</STRONG><BR>
+
+<!-- INPUT TYPE="HIDDEN" NAME="species" VALUE="Human herpesvirus 1 [gbvrl]" -->
+<INPUT TYPE="HIDDEN" NAME="species" VALUE="10298">
+
+<SELECT NAME="aa">
+<OPTION SELECTED>SELECT A CODE
+<OPTION VALUE="1">1: Standard
+<OPTION VALUE="2">2: Vertebrate Mitochondrial
+<OPTION VALUE="3">3: Yeast Mitochondrial
+<OPTION VALUE="4">4: Mold, Protozoan, Coelenterate Mitochondrial
+<OPTION VALUE="4">(4:)	and Mycoplasma/Spiroplasma
+<OPTION VALUE="5">5: Invertebrate Mitochondrial
+<OPTION VALUE="6">6: Ciliate Macronuclear and Dasycladacean
+<OPTION VALUE="9">9: Echinoderm Mitochondrial
+<OPTION VALUE="10">10: Alternative Ciliate Macronuclear
+<OPTION VALUE="11">11: Eubacterial
+<OPTION VALUE="12">12: Alternative Yeast
+<OPTION VALUE="13">13: Ascidian Mitochondrial
+<OPTION VALUE="14">14: Flatworm Mitochondrial
+<OPTION VALUE="15">15: Blepharisma Nuclear Code
+</SELECT>
+
+<A HREF = "http://www3.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wprintgc?mode=t">
+Genetic codes (NCBI)</A>
+
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="N" CHECKED>
+<!-- INPUT TYPE="hidden" NAME="style" VALUE="N" -->
+Codon Usage Table with Amino Acids
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="GCG">
+A style like CodonFrequency output in GCG <A HREF="http://www.gcg.com/products/software.html">Wisconsin Package<SUP>TM</SUP></A>
+
+<BR>
+
+<!-- INPUT TYPE="radio" NAME="style" VALUE="BT")Back translation (comming soon)
+(BR)
+(TEXTAREA NAME="aa_src" ROWS="2" COLS="60")(/TEXTAREA)
+(P -->
+<INPUT TYPE=SUBMIT VALUE="Submit">
+</FORM>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="srchcds.cgi" METHOD="POST">
+
+<STRONG>CDS Search:</STRONG><BR>
+
+<INPUT SIZE="40" TYPE="TEXT" NAME="key">
+<INPUT TYPE=SUBMIT VALUE="Submit">
+
+<INPUT TYPE="HIDDEN" NAME="abbrev" VALUE="10298">
+<INPUT TYPE="HIDDEN" NAME="entry" VALUE="vrl">
+<INPUT TYPE="HIDDEN" NAME="sponly" VALUE="Human herpesvirus 1">
+
+<BR>
+
+Keyword example: ribosomal protein / MAP kinase
+
+</FORM>
+
+<!-- A HREF="ftp://ftp.kazusa.or.jp/pub/codon/current/species/10298.vrl" -->
+<A HREF="http://www.kazusa.or.jp/codon/current/species/10298">
+List of codon usage for each CDS 
+</A>
+[CAUTION: The file is big (> 1000 entries).]
+ 
+<A HREF="http://www.kazusa.or.jp/codon/current/CODON_LABEL">
+(format)
+</A>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<I><A HREF= "/codon/">Homepage</A></I>
+
+</BODY>
+</HTML>

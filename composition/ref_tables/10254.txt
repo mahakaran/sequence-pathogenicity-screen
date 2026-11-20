@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>Codon usage table</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#F0F0F0">
+<STRONG><i>Vaccinia virus WR </i>[gbvrl]: 218 CDS's (57854 codons)</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+fields: [triplet] [amino acid] [fraction] [frequency: <STRONG>per thousand</STRONG>] ([number])
+<HR ALIGN="LEFT" SIZE=1>
+<PRE>
+UUU F 0.72 33.0 (  1912)  UCU S 0.31 23.8 (  1375)  UAU Y 0.71 36.5 (  2114)  UGU C 0.76 15.8 (   916)
+UUC F 0.28 13.2 (   762)  UCC S 0.12  9.4 (   545)  UAC Y 0.29 15.1 (   873)  UGC C 0.24  4.9 (   283)
+UUA L 0.30 25.8 (  1494)  UCA S 0.19 14.8 (   857)  UAA * 0.62  2.3 (   135)  UGA * 0.23  0.9 (    50)
+UUG L 0.21 18.5 (  1068)  UCG S 0.11  8.3 (   479)  UAG * 0.15  0.6 (    33)  UGG W 1.00  7.3 (   422)
+
+CUU L 0.13 11.5 (   668)  CCU P 0.32 10.9 (   628)  CAU H 0.71 14.7 (   852)  CGU R 0.15  6.4 (   371)
+CUC L 0.07  6.0 (   349)  CCC P 0.13  4.3 (   246)  CAC H 0.29  6.0 (   350)  CGC R 0.06  2.5 (   142)
+CUA L 0.21 18.1 (  1045)  CCA P 0.37 12.3 (   714)  CAA Q 0.72 16.0 (   924)  CGA R 0.14  5.9 (   343)
+CUG L 0.08  6.8 (   395)  CCG P 0.18  6.2 (   360)  CAG Q 0.28  6.3 (   363)  CGG R 0.04  1.6 (    92)
+
+AUU I 0.40 37.9 (  2193)  ACU T 0.37 22.3 (  1292)  AAU N 0.70 48.0 (  2779)  AGU S 0.19 14.6 (   846)
+AUC I 0.20 18.5 (  1073)  ACC T 0.14  8.5 (   489)  AAC N 0.30 20.4 (  1180)  AGC S 0.08  5.8 (   333)
+AUA I 0.40 38.2 (  2208)  ACA T 0.35 21.5 (  1244)  AAA K 0.69 50.8 (  2941)  AGA R 0.53 22.8 (  1318)
+AUG M 1.00 28.1 (  1628)  ACG T 0.14  8.7 (   506)  AAG K 0.31 22.9 (  1324)  AGG R 0.09  4.0 (   233)
+
+GUU V 0.34 20.6 (  1191)  GCU A 0.34 13.1 (   756)  GAU D 0.76 51.1 (  2955)  GGU G 0.32 13.0 (   750)
+GUC V 0.13  8.1 (   471)  GCC A 0.17  6.6 (   384)  GAC D 0.24 16.2 (   939)  GGC G 0.09  3.6 (   206)
+GUA V 0.38 23.1 (  1335)  GCA A 0.30 11.4 (   657)  GAA E 0.73 39.7 (  2299)  GGA G 0.52 20.8 (  1202)
+GUG V 0.15  9.4 (   545)  GCG A 0.19  7.1 (   413)  GAG E 0.27 14.5 (   840)  GGG G 0.07  2.8 (   164)
+</PRE>
+<HR ALIGN="LEFT" SIZE=1>
+Coding GC 34.03%
+1st letter GC 39.67%
+2nd letter GC 32.18%
+3rd letter GC 30.23%<BR>
+<STRONG>Genetic code 1: Standard</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="./showcodon.cgi" METHOD="GET">
+
+<STRONG>Format:</STRONG><BR>
+
+<!-- INPUT TYPE="HIDDEN" NAME="species" VALUE="Vaccinia virus WR [gbvrl]" -->
+<INPUT TYPE="HIDDEN" NAME="species" VALUE="10254">
+
+<SELECT NAME="aa">
+<OPTION SELECTED>SELECT A CODE
+<OPTION VALUE="1">1: Standard
+<OPTION VALUE="2">2: Vertebrate Mitochondrial
+<OPTION VALUE="3">3: Yeast Mitochondrial
+<OPTION VALUE="4">4: Mold, Protozoan, Coelenterate Mitochondrial
+<OPTION VALUE="4">(4:)	and Mycoplasma/Spiroplasma
+<OPTION VALUE="5">5: Invertebrate Mitochondrial
+<OPTION VALUE="6">6: Ciliate Macronuclear and Dasycladacean
+<OPTION VALUE="9">9: Echinoderm Mitochondrial
+<OPTION VALUE="10">10: Alternative Ciliate Macronuclear
+<OPTION VALUE="11">11: Eubacterial
+<OPTION VALUE="12">12: Alternative Yeast
+<OPTION VALUE="13">13: Ascidian Mitochondrial
+<OPTION VALUE="14">14: Flatworm Mitochondrial
+<OPTION VALUE="15">15: Blepharisma Nuclear Code
+</SELECT>
+
+<A HREF = "http://www3.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wprintgc?mode=t">
+Genetic codes (NCBI)</A>
+
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="N" CHECKED>
+<!-- INPUT TYPE="hidden" NAME="style" VALUE="N" -->
+Codon Usage Table with Amino Acids
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="GCG">
+A style like CodonFrequency output in GCG <A HREF="http://www.gcg.com/products/software.html">Wisconsin Package<SUP>TM</SUP></A>
+
+<BR>
+
+<!-- INPUT TYPE="radio" NAME="style" VALUE="BT")Back translation (comming soon)
+(BR)
+(TEXTAREA NAME="aa_src" ROWS="2" COLS="60")(/TEXTAREA)
+(P -->
+<INPUT TYPE=SUBMIT VALUE="Submit">
+</FORM>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="srchcds.cgi" METHOD="POST">
+
+<STRONG>CDS Search:</STRONG><BR>
+
+<INPUT SIZE="40" TYPE="TEXT" NAME="key">
+<INPUT TYPE=SUBMIT VALUE="Submit">
+
+<INPUT TYPE="HIDDEN" NAME="abbrev" VALUE="10254">
+<INPUT TYPE="HIDDEN" NAME="entry" VALUE="vrl">
+<INPUT TYPE="HIDDEN" NAME="sponly" VALUE="Vaccinia virus WR">
+
+<BR>
+
+Keyword example: ribosomal protein / MAP kinase
+
+</FORM>
+
+<!-- A HREF="ftp://ftp.kazusa.or.jp/pub/codon/current/species/10254.vrl" -->
+<A HREF="http://www.kazusa.or.jp/codon/current/species/10254">
+List of codon usage for each CDS 
+</A> 
+<A HREF="http://www.kazusa.or.jp/codon/current/CODON_LABEL">
+(format)
+</A>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<I><A HREF= "/codon/">Homepage</A></I>
+
+</BODY>
+</HTML>

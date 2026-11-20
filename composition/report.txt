@@ -1,0 +1,95 @@
+Sequence length: 288 nt
+Base counts: A=116 (40.3%)  C=63 (21.9%)  G=27 (9.4%)  T=82 (28.5%)
+GC = 31.2%   AT = 68.8%
+GC skew (G-C)/(G+C) = -0.40   AT skew (A-T)/(A+T) = +0.17
+Sliding GC (60 nt windows, step 15): min 25%  max 38%  -> 25 32 30 38 37 33 37 33 32 30 32 30 35 35 30 32
+
+GC by codon position (GC1 / GC2 / GC3):
+  +1 (ORF1)               10.4 /  37.5 /  45.8   (96 codons)
+  -1 (ORF4, SOD-like)     45.8 /  37.5 /  10.4   (96 codons)
+
+Dinucleotide observed/expected (1.0 = as expected from base composition):
+  AA=0.79  AC=0.79  AG=1.93  AT=1.15  CA=1.66  CC=1.16  CG=0.00  CT=0.28  GA=1.01  GC=1.69  GG=0.79  GT=0.52  TA=0.76  TC=0.95  TG=0.52  TT=1.50
+  CpG o/e = 0.00  (vertebrates & many vertebrate viruses ~0.2-0.4; most bacteria/phage ~0.8-1.2)
+  TpA o/e = 0.76  (typically depleted, ~0.6-0.8, in most genomes)
+
+Codon usage, frame +1 (ORF1): ENC = 27.8 (20 = extreme bias, 61 = none; noisy at 96 codons), GC3 = 43.5%
+  rank   synLL    CAI  refGC3  organism (group, codons in table)
+     1   -1.53   0.76   36.1%  Saccharomyces cerevisiae (Eukaryota, 6,534,504)
+     2   -1.54   0.84   57.2%  Homo sapiens (Eukaryota, 40,662,582)
+     3   -1.57   0.78   42.9%  Bacillus subtilis (Bacteria, 815,445)
+     4   -1.58   0.81   40.2%  Arabidopsis thaliana (Eukaryota, 31,098,475)
+     5   -1.58   0.76   47.6%  Autographa californica NPV (Virus, 77,487)
+     6   -1.62   0.58   26.0%  Candida albicans (Eukaryota, 635,617)
+     7   -1.64   0.73   37.5%  Caenorhabditis elegans (Eukaryota, 11,197,796)
+     8   -1.68   0.71   63.1%  Drosophila melanogaster (Eukaryota, 21,945,319)
+     9   -1.71   0.62   27.7%  Vaccinia virus WR (Virus, 57,854)
+    10   -1.72   0.60   54.1%  Escherichia coli K-12 (Bacteria, 5,122)
+    11   -1.82   0.48   21.5%  Enterobacteria phage T4 (Virus, 114,247)
+    12   -1.85   0.49   19.9%  Staphylococcus aureus N315 (Bacteria, 790,494)
+    13   -1.86   0.41   12.8%  Dictyostelium discoideum (Eukaryota, 1,965,665)
+    14   -1.86   0.46   15.0%  Plasmodium falciparum 3D7 (Eukaryota, 2,993,721)
+    15   -1.97   0.41   13.6%  Clostridium perfringens 13 (Bacteria, 858,710)
+    16   -2.00   0.45   79.0%  Human herpesvirus 1 (Virus, 355,849)
+    17   -3.34   0.13   93.0%  Streptomyces coelicolor (Bacteria, 22,208)
+  synLL = mean log2 P(codon | amino acid) under that organism's usage (higher = codon choices fit better). CAI = codon adaptation index.
+
+Codon usage, frame -1 (ORF4, SOD-like): ENC = 20.0 (20 = extreme bias, 61 = none; noisy at 96 codons), GC3 = 6.5%
+  rank   synLL    CAI  refGC3  organism (group, codons in table)
+     1   -0.85   0.97   26.0%  Candida albicans (Eukaryota, 635,617)
+     2   -0.87   0.93   21.5%  Enterobacteria phage T4 (Virus, 114,247)
+     3   -0.90   0.76   12.8%  Dictyostelium discoideum (Eukaryota, 1,965,665)
+     4   -1.02   0.82   19.9%  Staphylococcus aureus N315 (Bacteria, 790,494)
+     5   -1.04   0.82   15.0%  Plasmodium falciparum 3D7 (Eukaryota, 2,993,721)
+     6   -1.11   0.99   36.1%  Saccharomyces cerevisiae (Eukaryota, 6,534,504)
+     7   -1.14   0.92   27.7%  Vaccinia virus WR (Virus, 57,854)
+     8   -1.15   0.71   13.6%  Clostridium perfringens 13 (Bacteria, 858,710)
+     9   -1.24   0.98   40.2%  Arabidopsis thaliana (Eukaryota, 31,098,475)
+    10   -1.31   0.85   37.5%  Caenorhabditis elegans (Eukaryota, 11,197,796)
+    11   -1.47   0.85   42.9%  Bacillus subtilis (Bacteria, 815,445)
+    12   -1.53   0.76   47.6%  Autographa californica NPV (Virus, 77,487)
+    13   -1.68   0.61   54.1%  Escherichia coli K-12 (Bacteria, 5,122)
+    14   -1.78   0.67   57.2%  Homo sapiens (Eukaryota, 40,662,582)
+    15   -1.97   0.53   63.1%  Drosophila melanogaster (Eukaryota, 21,945,319)
+    16   -2.87   0.24   79.0%  Human herpesvirus 1 (Virus, 355,849)
+    17   -4.86   0.05   93.0%  Streptomyces coelicolor (Bacteria, 22,208)
+  synLL = mean log2 P(codon | amino acid) under that organism's usage (higher = codon choices fit better). CAI = codon adaptation index.
+
+Open reading frames (longest stop-free run / frame length, codons):
+  +1: 96/96  +2: 86/95  +3: 25/95  -1: 96/96  -2: 47/95  -3: 12/95
+  Stops in +1/-1 frames: none
+
+Shuffle test A - random sequences with the same base composition (n=20,000):
+  P(+1 and -1 both stop-free over all 96 codons) = 0.00000
+  P(any frame on each strand fully stop-free)     = 0.00000
+
+Codons whose reverse complement is a stop codon (CTA, TCA, TTA): used 0 times in ORF4's 96 codons
+  L: CTA=0*, CTC=0, CTG=0, CTT=0, TTA=0*, TTG=6
+  S: AGC=0, AGT=0, TCA=0*, TCC=0, TCG=0, TCT=6
+  F: TTC=0, TTT=1
+
+Shuffle test B - ORF4's protein kept, synonymous codons re-drawn from each organism's usage (n=5,000 each):
+    P(opposite strand stop-free)  organism
+                         0.10060  Escherichia coli K-12 (Bacteria)
+                         0.03860  Bacillus subtilis (Bacteria)
+                         0.00000  Staphylococcus aureus N315 (Bacteria)
+                         0.00000  Clostridium perfringens 13 (Bacteria)
+                         0.88060  Streptomyces coelicolor (Bacteria)
+                         0.14120  Homo sapiens (Eukaryota)
+                         0.00980  Saccharomyces cerevisiae (Eukaryota)
+                         0.00220  Candida albicans (Eukaryota)
+                         0.04920  Arabidopsis thaliana (Eukaryota)
+                         0.22440  Drosophila melanogaster (Eukaryota)
+                         0.04100  Caenorhabditis elegans (Eukaryota)
+                         0.00000  Dictyostelium discoideum (Eukaryota)
+                         0.00020  Plasmodium falciparum 3D7 (Eukaryota)
+                         0.00280  Vaccinia virus WR (Virus)
+                         0.00280  Enterobacteria phage T4 (Virus)
+                         0.04840  Autographa californica NPV (Virus)
+                         0.52940  Human herpesvirus 1 (Virus)
+
+Restriction sites (both strands, palindromic sites count once):
+  EcoRI (GAATTC) at [140]; BglII (AGATCT) at [265]
+  (for reference: expected count of a given AT-rich 6-mer like AGATCT here ~0.08)
+Homopolymer runs >= 5: Tx6 @37, Tx6 @163, Tx5 @217, Tx5 @257
+Repeats (>=10 nt): none

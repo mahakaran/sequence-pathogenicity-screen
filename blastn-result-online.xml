@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastn</BlastOutput_program>
+  <BlastOutput_version>BLASTN 2.17.0+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db>core_nt</BlastOutput_db>
+  <BlastOutput_query-ID>Query_7648663</BlastOutput_query-ID>
+  <BlastOutput_query-def>No definition line</BlastOutput_query-def>
+  <BlastOutput_query-len>288</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_expect>0.05</Parameters_expect>
+      <Parameters_sc-match>2</Parameters_sc-match>
+      <Parameters_sc-mismatch>-3</Parameters_sc-mismatch>
+      <Parameters_gap-open>5</Parameters_gap-open>
+      <Parameters_gap-extend>2</Parameters_gap-extend>
+      <Parameters_filter>L;m;</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_7648663</Iteration_query-ID>
+  <Iteration_query-def>No definition line</Iteration_query-def>
+  <Iteration_query-len>288</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>gi|1069881532|ref|XM_018364852.1|</Hit_id>
+  <Hit_def>Saccharomyces eubayanus 1-phosphatidylinositol-3-phosphate 5-kinase (FAB1), partial mRNA</Hit_def>
+  <Hit_accession>XM_018364852</Hit_accession>
+  <Hit_len>6897</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>54.4857</Hsp_bit-score>
+      <Hsp_score>59</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>84</Hsp_query-from>
+      <Hsp_query-to>140</Hsp_query-to>
+      <Hsp_hit-from>1791</Hsp_hit-from>
+      <Hsp_hit-to>1847</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>46</Hsp_identity>
+      <Hsp_positive>46</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>57</Hsp_align-len>
+      <Hsp_qseq>CAACAATAATAGGACCAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAG</Hsp_qseq>
+      <Hsp_hseq>CAACAGCAACAGCAACAGCAACAGCAACAGCAACATCATCATCATCAGTAGCAGCAG</Hsp_hseq>
+      <Hsp_midline>|||||  || || | |||||||||||| ||||||||  ||||||| || ||||| ||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>2</Hit_num>
+  <Hit_id>gi|1510359325|ref|XM_002015294.2|</Hit_id>
+  <Hit_def>PREDICTED: Drosophila persimilis transcription factor mef2A (LOC6588877), mRNA</Hit_def>
+  <Hit_accession>XM_002015294</Hit_accession>
+  <Hit_len>2301</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>54.4857</Hsp_bit-score>
+      <Hsp_score>59</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>99</Hsp_query-from>
+      <Hsp_query-to>140</Hsp_query-to>
+      <Hsp_hit-from>1942</Hsp_hit-from>
+      <Hsp_hit-to>1983</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>37</Hsp_identity>
+      <Hsp_positive>37</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>42</Hsp_align-len>
+      <Hsp_qseq>CAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAG</Hsp_qseq>
+      <Hsp_hseq>CAGCAACAGCAACAGCAACATCTTCATCATCAGCAGCAGCAG</Hsp_hseq>
+      <Hsp_midline>|||||||||||| |||||||| |||||||| || ||||| ||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>3</Hit_num>
+  <Hit_id>gi|2202988380|ref|XM_046951211.1|</Hit_id>
+  <Hit_def>PREDICTED: Lucilia cuprina putative uncharacterized protein DDB_G0282133 (LOC111685710), transcript variant X3, mRNA</Hit_def>
+  <Hit_accession>XM_046951211</Hit_accession>
+  <Hit_len>2050</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>81</Hsp_query-from>
+      <Hsp_query-to>119</Hsp_query-to>
+      <Hsp_hit-from>616</Hsp_hit-from>
+      <Hsp_hit-to>654</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>35</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>39</Hsp_align-len>
+      <Hsp_qseq>TATCAACAATAATAGGACCAGCAACAGCAATAGCAACAT</Hsp_qseq>
+      <Hsp_hseq>TAGCAACAATAATAAAAGCAGCAACAGCAATAGCAACAT</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||  | |||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>4</Hit_num>
+  <Hit_id>gi|1184362907|ref|XM_020862199.1|</Hit_id>
+  <Hit_def>PREDICTED: Ceratitis capitata phosphatase and actin regulator 4 (LOC101463215), transcript variant X6, mRNA</Hit_def>
+  <Hit_accession>XM_020862199</Hit_accession>
+  <Hit_len>6071</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>99</Hsp_query-from>
+      <Hsp_query-to>160</Hsp_query-to>
+      <Hsp_hit-from>725</Hsp_hit-from>
+      <Hsp_hit-to>789</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>52</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>CAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAGAAT--TCAA-AACAATACCAACA</Hsp_qseq>
+      <Hsp_hseq>CAGCAACAGCAACAGCAACATCATCATCATCAGCAGCAGCAGCATCAGCAACACCAACACCAACA</Hsp_hseq>
+      <Hsp_midline>|||||||||||| ||||||||  ||||||| || ||||| || ||   ||| | ||| |||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>5</Hit_num>
+  <Hit_id>gi|1184362899|ref|XM_020862195.1|</Hit_id>
+  <Hit_def>PREDICTED: Ceratitis capitata phosphatase and actin regulator 4 (LOC101463215), transcript variant X2, mRNA</Hit_def>
+  <Hit_accession>XM_020862195</Hit_accession>
+  <Hit_len>6132</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>99</Hsp_query-from>
+      <Hsp_query-to>160</Hsp_query-to>
+      <Hsp_hit-from>735</Hsp_hit-from>
+      <Hsp_hit-to>799</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>52</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>CAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAGAAT--TCAA-AACAATACCAACA</Hsp_qseq>
+      <Hsp_hseq>CAGCAACAGCAACAGCAACATCATCATCATCAGCAGCAGCAGCATCAGCAACACCAACACCAACA</Hsp_hseq>
+      <Hsp_midline>|||||||||||| ||||||||  ||||||| || ||||| || ||   ||| | ||| |||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>6</Hit_num>
+  <Hit_id>gi|1184362901|ref|XM_020862196.1|</Hit_id>
+  <Hit_def>PREDICTED: Ceratitis capitata phosphatase and actin regulator 4 (LOC101463215), transcript variant X3, mRNA</Hit_def>
+  <Hit_accession>XM_020862196</Hit_accession>
+  <Hit_len>6336</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>99</Hsp_query-from>
+      <Hsp_query-to>160</Hsp_query-to>
+      <Hsp_hit-from>939</Hsp_hit-from>
+      <Hsp_hit-to>1003</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>52</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>CAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAGAAT--TCAA-AACAATACCAACA</Hsp_qseq>
+      <Hsp_hseq>CAGCAACAGCAACAGCAACATCATCATCATCAGCAGCAGCAGCATCAGCAACACCAACACCAACA</Hsp_hseq>
+      <Hsp_midline>|||||||||||| ||||||||  ||||||| || ||||| || ||   ||| | ||| |||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>7</Hit_num>
+  <Hit_id>gi|2103348041|ref|XM_021740587.2|</Hit_id>
+  <Hit_def>PREDICTED: Manihot esculenta ethylene-responsive transcription factor 4 (LOC110602965), mRNA</Hit_def>
+  <Hit_accession>XM_021740587</Hit_accession>
+  <Hit_len>1096</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>79</Hsp_query-from>
+      <Hsp_query-to>132</Hsp_query-to>
+      <Hsp_hit-from>647</Hsp_hit-from>
+      <Hsp_hit-to>700</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>44</Hsp_identity>
+      <Hsp_positive>44</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>54</Hsp_align-len>
+      <Hsp_qseq>TTTATCAACAATAATAGGACCAGCAACAGCAATAGCAACATATTCATCATTAGA</Hsp_qseq>
+      <Hsp_hseq>TTGATCATCAGCAACAGCAACAGCAACAGCAACAGCAACATCTTCATCATCAGA</Hsp_hseq>
+      <Hsp_midline>|| |||| ||  || || | |||||||||||| |||||||| |||||||| |||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>8</Hit_num>
+  <Hit_id>gi|2202988378|ref|XM_046951210.1|</Hit_id>
+  <Hit_def>PREDICTED: Lucilia cuprina putative uncharacterized protein DDB_G0282133 (LOC111685710), transcript variant X2, mRNA</Hit_def>
+  <Hit_accession>XM_046951210</Hit_accession>
+  <Hit_len>1512</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>81</Hsp_query-from>
+      <Hsp_query-to>119</Hsp_query-to>
+      <Hsp_hit-from>616</Hsp_hit-from>
+      <Hsp_hit-to>654</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>35</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>39</Hsp_align-len>
+      <Hsp_qseq>TATCAACAATAATAGGACCAGCAACAGCAATAGCAACAT</Hsp_qseq>
+      <Hsp_hseq>TAGCAACAATAATAAAAGCAGCAACAGCAATAGCAACAT</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||  | |||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>9</Hit_num>
+  <Hit_id>gi|1184362905|ref|XM_020862198.1|</Hit_id>
+  <Hit_def>PREDICTED: Ceratitis capitata phosphatase and actin regulator 4 (LOC101463215), transcript variant X5, mRNA</Hit_def>
+  <Hit_accession>XM_020862198</Hit_accession>
+  <Hit_len>6088</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>99</Hsp_query-from>
+      <Hsp_query-to>160</Hsp_query-to>
+      <Hsp_hit-from>691</Hsp_hit-from>
+      <Hsp_hit-to>755</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>52</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>CAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAGAAT--TCAA-AACAATACCAACA</Hsp_qseq>
+      <Hsp_hseq>CAGCAACAGCAACAGCAACATCATCATCATCAGCAGCAGCAGCATCAGCAACACCAACACCAACA</Hsp_hseq>
+      <Hsp_midline>|||||||||||| ||||||||  ||||||| || ||||| || ||   ||| | ||| |||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>10</Hit_num>
+  <Hit_id>gi|2202988376|ref|XM_046951209.1|</Hit_id>
+  <Hit_def>PREDICTED: Lucilia cuprina putative uncharacterized protein DDB_G0282133 (LOC111685710), transcript variant X1, mRNA</Hit_def>
+  <Hit_accession>XM_046951209</Hit_accession>
+  <Hit_len>1384</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>81</Hsp_query-from>
+      <Hsp_query-to>119</Hsp_query-to>
+      <Hsp_hit-from>616</Hsp_hit-from>
+      <Hsp_hit-to>654</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>35</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>39</Hsp_align-len>
+      <Hsp_qseq>TATCAACAATAATAGGACCAGCAACAGCAATAGCAACAT</Hsp_qseq>
+      <Hsp_hseq>TAGCAACAATAATAAAAGCAGCAACAGCAATAGCAACAT</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||  | |||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>11</Hit_num>
+  <Hit_id>gi|2202988382|ref|XM_046951212.1|</Hit_id>
+  <Hit_def>PREDICTED: Lucilia cuprina putative uncharacterized protein DDB_G0282133 (LOC111685710), transcript variant X4, mRNA</Hit_def>
+  <Hit_accession>XM_046951212</Hit_accession>
+  <Hit_len>1647</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>81</Hsp_query-from>
+      <Hsp_query-to>119</Hsp_query-to>
+      <Hsp_hit-from>616</Hsp_hit-from>
+      <Hsp_hit-to>654</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>35</Hsp_identity>
+      <Hsp_positive>35</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>39</Hsp_align-len>
+      <Hsp_qseq>TATCAACAATAATAGGACCAGCAACAGCAATAGCAACAT</Hsp_qseq>
+      <Hsp_hseq>TAGCAACAATAATAAAAGCAGCAACAGCAATAGCAACAT</Hsp_hseq>
+      <Hsp_midline>|| |||||||||||  | |||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>12</Hit_num>
+  <Hit_id>gi|1976362801|ref|XM_002101949.3|</Hit_id>
+  <Hit_def>PREDICTED: Drosophila yakuba calpain-D (LOC6526175), transcript variant X1, mRNA</Hit_def>
+  <Hit_accession>XM_002101949</Hit_accession>
+  <Hit_len>5597</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>82</Hsp_query-from>
+      <Hsp_query-to>140</Hsp_query-to>
+      <Hsp_hit-from>1649</Hsp_hit-from>
+      <Hsp_hit-to>1707</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>47</Hsp_identity>
+      <Hsp_positive>47</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>59</Hsp_align-len>
+      <Hsp_qseq>ATCAACAATAATAGGACCAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAG</Hsp_qseq>
+      <Hsp_hseq>ATCAACAGCAATAGCAACAGCAACAGCAATAGCAACATCATCAACAACAACAGCAGCAG</Hsp_hseq>
+      <Hsp_midline>|||||||  ||||| | |||||||||||||||||||||  ||| ||  |  ||||| ||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>13</Hit_num>
+  <Hit_id>gi|1184362897|ref|XM_020862194.1|</Hit_id>
+  <Hit_def>PREDICTED: Ceratitis capitata phosphatase and actin regulator 4 (LOC101463215), transcript variant X1, mRNA</Hit_def>
+  <Hit_accession>XM_020862194</Hit_accession>
+  <Hit_len>6122</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>99</Hsp_query-from>
+      <Hsp_query-to>160</Hsp_query-to>
+      <Hsp_hit-from>725</Hsp_hit-from>
+      <Hsp_hit-to>789</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>52</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>CAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAGAAT--TCAA-AACAATACCAACA</Hsp_qseq>
+      <Hsp_hseq>CAGCAACAGCAACAGCAACATCATCATCATCAGCAGCAGCAGCATCAGCAACACCAACACCAACA</Hsp_hseq>
+      <Hsp_midline>|||||||||||| ||||||||  ||||||| || ||||| || ||   ||| | ||| |||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>14</Hit_num>
+  <Hit_id>gi|1184362903|ref|XM_020862197.1|</Hit_id>
+  <Hit_def>PREDICTED: Ceratitis capitata phosphatase and actin regulator 4 (LOC101463215), transcript variant X4, mRNA</Hit_def>
+  <Hit_accession>XM_020862197</Hit_accession>
+  <Hit_len>6108</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>99</Hsp_query-from>
+      <Hsp_query-to>160</Hsp_query-to>
+      <Hsp_hit-from>711</Hsp_hit-from>
+      <Hsp_hit-to>775</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>52</Hsp_identity>
+      <Hsp_positive>52</Hsp_positive>
+      <Hsp_gaps>3</Hsp_gaps>
+      <Hsp_align-len>65</Hsp_align-len>
+      <Hsp_qseq>CAGCAACAGCAATAGCAACATATTCATCATTAGAAGCAGGAGAAT--TCAA-AACAATACCAACA</Hsp_qseq>
+      <Hsp_hseq>CAGCAACAGCAACAGCAACATCATCATCATCAGCAGCAGCAGCATCAGCAACACCAACACCAACA</Hsp_hseq>
+      <Hsp_midline>|||||||||||| ||||||||  ||||||| || ||||| || ||   ||| | ||| |||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+<Hit>
+  <Hit_num>15</Hit_num>
+  <Hit_id>gi|2070768205|ref|XM_042655854.1|</Hit_id>
+  <Hit_def>PREDICTED: Macadamia integrifolia receptor like protein kinase S.2-like (LOC122086938), mRNA</Hit_def>
+  <Hit_accession>XM_042655854</Hit_accession>
+  <Hit_len>564</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>53.584</Hsp_bit-score>
+      <Hsp_score>58</Hsp_score>
+      <Hsp_evalue>0.0201113</Hsp_evalue>
+      <Hsp_query-from>60</Hsp_query-from>
+      <Hsp_query-to>126</Hsp_query-to>
+      <Hsp_hit-from>110</Hsp_hit-from>
+      <Hsp_hit-to>178</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>55</Hsp_identity>
+      <Hsp_positive>55</Hsp_positive>
+      <Hsp_gaps>6</Hsp_gaps>
+      <Hsp_align-len>71</Hsp_align-len>
+      <Hsp_qseq>CAGTACCACCCCAATT----CAATTTATCAACAATAATAGGACCAGCAACAGCAATAGCAACATATTCATC</Hsp_qseq>
+      <Hsp_hseq>CACTACCACCACAATCATAACAATTT--CAACAATAATAGGAACATCAACAACAACAACAACAAATGCATC</Hsp_hseq>
+      <Hsp_midline>|| ||||||| ||||     ||||||  |||||||||||||| || ||||| ||| | ||||| || ||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>132977177</Statistics_db-num>
+      <Statistics_db-len>485199999</Statistics_db-len>
+      <Statistics_hsp-len>0</Statistics_hsp-len>
+      <Statistics_eff-space>0</Statistics_eff-space>
+      <Statistics_kappa>0.41</Statistics_kappa>
+      <Statistics_lambda>0.625</Statistics_lambda>
+      <Statistics_entropy>0.78</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>

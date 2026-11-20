@@ -1,0 +1,6 @@
+U	full_sequence	unclassified (taxid 0)	288	0:254
+U	ORF1	unclassified (taxid 0)	288	0:254
+U	ORF2	unclassified (taxid 0)	261	0:227
+U	ORF3	unclassified (taxid 0)	78	0:44
+U	ORF4	unclassified (taxid 0)	288	0:254
+U	ORF5	unclassified (taxid 0)	144	0:110

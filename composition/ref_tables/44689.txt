@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<TITLE>Codon usage table</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#F0F0F0">
+<STRONG><i>Dictyostelium discoideum </i>[gbinv]: 3372 CDS's (1965665 codons)</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+fields: [triplet] [amino acid] [fraction] [frequency: <STRONG>per thousand</STRONG>] ([number])
+<HR ALIGN="LEFT" SIZE=1>
+<PRE>
+UUU F 0.68 31.0 ( 60977)  UCU S 0.16 15.8 ( 30997)  UAU Y 0.84 28.9 ( 56836)  UGU C 0.90 12.9 ( 25437)
+UUC F 0.32 14.4 ( 28275)  UCC S 0.04  4.1 (  8156)  UAC Y 0.16  5.3 ( 10455)  UGC C 0.10  1.5 (  2923)
+UUA L 0.65 55.0 (108183)  UCA S 0.52 50.4 ( 99137)  UAA * 0.90  1.5 (  3039)  UGA * 0.05  0.1 (   161)
+UUG L 0.14 11.5 ( 22644)  UCG S 0.02  2.4 (  4738)  UAG * 0.05  0.1 (   173)  UGG W 1.00  7.6 ( 14947)
+
+CUU L 0.12  9.8 ( 19320)  CCU P 0.14  5.8 ( 11403)  CAU H 0.86 15.3 ( 30170)  CGU R 0.26  7.6 ( 14868)
+CUC L 0.05  3.8 (  7540)  CCC P 0.03  1.0 (  2036)  CAC H 0.14  2.5 (  4825)  CGC R 0.00  0.1 (   140)
+CUA L 0.05  4.7 (  9181)  CCA P 0.82 34.1 ( 66933)  CAA Q 0.97 49.5 ( 97396)  CGA R 0.02  0.5 (   951)
+CUG L 0.00  0.3 (   577)  CCG P 0.01  0.5 (   985)  CAG Q 0.03  1.7 (  3421)  CGG R 0.00  0.1 (   110)
+
+AUU I 0.62 50.4 ( 99165)  ACU T 0.36 21.8 ( 42828)  AAU N 0.90 94.5 (185686)  AGU S 0.23 22.5 ( 44306)
+AUC I 0.14 11.7 ( 23016)  ACC T 0.14  8.5 ( 16614)  AAC N 0.10 10.8 ( 21188)  AGC S 0.02  2.4 (  4778)
+AUA I 0.23 18.8 ( 36907)  ACA T 0.48 29.4 ( 57700)  AAA K 0.84 60.7 (119303)  AGA R 0.68 19.8 ( 38946)
+AUG M 1.00 16.6 ( 32675)  ACG T 0.02  1.0 (  1960)  AAG K 0.16 11.9 ( 23486)  AGG R 0.04  1.3 (  2498)
+
+GUU V 0.56 25.7 ( 50495)  GCU A 0.34 12.0 ( 23490)  GAU D 0.92 47.0 ( 92468)  GGU G 0.76 36.9 ( 72530)
+GUC V 0.09  3.9 (  7675)  GCC A 0.12  4.2 (  8326)  GAC D 0.08  4.3 (  8441)  GGC G 0.04  2.2 (  4301)
+GUA V 0.30 13.7 ( 26836)  GCA A 0.52 17.9 ( 35130)  GAA E 0.84 48.3 ( 94999)  GGA G 0.18  8.8 ( 17208)
+GUG V 0.05  2.3 (  4606)  GCG A 0.02  0.6 (  1179)  GAG E 0.16  9.3 ( 18283)  GGG G 0.02  0.9 (  1708)
+</PRE>
+<HR ALIGN="LEFT" SIZE=1>
+Coding GC 28.62%
+1st letter GC 37.52%
+2nd letter GC 33.45%
+3rd letter GC 14.89%<BR>
+<STRONG>Genetic code 1: Standard</STRONG>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="./showcodon.cgi" METHOD="GET">
+
+<STRONG>Format:</STRONG><BR>
+
+<!-- INPUT TYPE="HIDDEN" NAME="species" VALUE="Dictyostelium discoideum [gbinv]" -->
+<INPUT TYPE="HIDDEN" NAME="species" VALUE="44689">
+
+<SELECT NAME="aa">
+<OPTION SELECTED>SELECT A CODE
+<OPTION VALUE="1">1: Standard
+<OPTION VALUE="2">2: Vertebrate Mitochondrial
+<OPTION VALUE="3">3: Yeast Mitochondrial
+<OPTION VALUE="4">4: Mold, Protozoan, Coelenterate Mitochondrial
+<OPTION VALUE="4">(4:)	and Mycoplasma/Spiroplasma
+<OPTION VALUE="5">5: Invertebrate Mitochondrial
+<OPTION VALUE="6">6: Ciliate Macronuclear and Dasycladacean
+<OPTION VALUE="9">9: Echinoderm Mitochondrial
+<OPTION VALUE="10">10: Alternative Ciliate Macronuclear
+<OPTION VALUE="11">11: Eubacterial
+<OPTION VALUE="12">12: Alternative Yeast
+<OPTION VALUE="13">13: Ascidian Mitochondrial
+<OPTION VALUE="14">14: Flatworm Mitochondrial
+<OPTION VALUE="15">15: Blepharisma Nuclear Code
+</SELECT>
+
+<A HREF = "http://www3.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wprintgc?mode=t">
+Genetic codes (NCBI)</A>
+
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="N" CHECKED>
+<!-- INPUT TYPE="hidden" NAME="style" VALUE="N" -->
+Codon Usage Table with Amino Acids
+<BR>
+
+<INPUT TYPE="radio" NAME="style" VALUE="GCG">
+A style like CodonFrequency output in GCG <A HREF="http://www.gcg.com/products/software.html">Wisconsin Package<SUP>TM</SUP></A>
+
+<BR>
+
+<!-- INPUT TYPE="radio" NAME="style" VALUE="BT")Back translation (comming soon)
+(BR)
+(TEXTAREA NAME="aa_src" ROWS="2" COLS="60")(/TEXTAREA)
+(P -->
+<INPUT TYPE=SUBMIT VALUE="Submit">
+</FORM>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<FORM ACTION="srchcds.cgi" METHOD="POST">
+
+<STRONG>CDS Search:</STRONG><BR>
+
+<INPUT SIZE="40" TYPE="TEXT" NAME="key">
+<INPUT TYPE=SUBMIT VALUE="Submit">
+
+<INPUT TYPE="HIDDEN" NAME="abbrev" VALUE="44689">
+<INPUT TYPE="HIDDEN" NAME="entry" VALUE="inv">
+<INPUT TYPE="HIDDEN" NAME="sponly" VALUE="Dictyostelium discoideum">
+
+<BR>
+
+Keyword example: ribosomal protein / MAP kinase
+
+</FORM>
+
+<!-- A HREF="ftp://ftp.kazusa.or.jp/pub/codon/current/species/44689.inv" -->
+<A HREF="http://www.kazusa.or.jp/codon/current/species/44689">
+List of codon usage for each CDS 
+</A>
+[CAUTION: The file is big (> 1000 entries).]
+ 
+<A HREF="http://www.kazusa.or.jp/codon/current/CODON_LABEL">
+(format)
+</A>
+
+<HR ALIGN="LEFT" SIZE=1>
+
+<I><A HREF= "/codon/">Homepage</A></I>
+
+</BODY>
+</HTML>

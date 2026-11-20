@@ -1,0 +1,56 @@
+# ---------------------------------------------------------------------------
+# Large regenerable artifacts.
+#
+# Nothing here is a result. Every path below is either a third-party download
+# (model weights, reference databases) or an intermediate that the scripts in
+# this repository rebuild from those downloads. The repo keeps the code, the
+# small result tables and the figures; it does not keep ~30 GB of inputs.
+# See README.md ("Reproducing the analysis") for how to fetch each one.
+# ---------------------------------------------------------------------------
+
+# Reference sequence database (419 MB; exceeds GitHub's 100 MB file limit)
+DS569k.parquet
+
+# Kraken2 databases (~22 GB) - download from the Kraken2 index page
+kraken/kraken_db/
+
+# ESM-2 650M weights (~2.4 GB) - fetched from HuggingFace on first run
+esm_embedding/model_650m/
+esm_embedding/pretrained/
+
+# Precomputed Swiss-Prot embeddings (~2.8 GB) - supplied with the exercise
+esm_embedding/downloaded_embeddings/
+esm_embedding/esm_embeddings/
+
+# DIAMOND databases built from Swiss-Prot and VFDB (~449 MB)
+esm_embedding/diamond/
+
+# Embedding intermediates rebuilt by embed_missing.py / uniprot_650m_map.py
+esm_embedding/results/missing_650m.npy
+esm_embedding/results/missing_650m_partial.f32
+esm_embedding/results/missing_650m_partial.npz
+esm_embedding/results/missing_650m_partial_acc.txt
+esm_embedding/results/missing_650m_accessions.txt
+esm_embedding/results/missing_to_embed.parquet
+esm_embedding/results/prelim_sim.npy
+esm_embedding/results/umap*_coords.parquet
+esm_embedding/results/umap_annotations.parquet
+esm_embedding/results/*.log
+
+# AlphaFold server outputs: the .zip files are the originals and are kept;
+# extracted/ is just those unpacked
+alphafold_orfs/extracted/
+
+# ---------------------------------------------------------------------------
+# Environments, caches, OS cruft
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+
+# Unrelated personal document that was sitting in this folder - excluded so it
+# is never published. Move it out of the project when convenient.
+alphafold_orfs/*.docx
