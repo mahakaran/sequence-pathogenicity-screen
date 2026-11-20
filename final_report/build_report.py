@@ -487,19 +487,14 @@ def build():
             "log&nbsp;<i>P</i>(&thinsp;<i>x</i><sub>i</sub> &nbsp;|&nbsp; "
             "<i>x</i><sub>&#8722;i</sub>&thinsp;)", "eq")]
     f += [P(
-        "where <i>x</i><sub>&#8722;i</sub> denotes the sequence with position <i>i</i> replaced by "
-        "a mask token, and <i>P</i>(<i>x</i><sub>i</sub> | <i>x</i><sub>&#8722;i</sub>) is the "
-        "model's probability for the residue actually observed there, given the rest of the "
-        "sequence. One forward pass is required per position, so a sequence of length <i>L</i> "
-        "costs <i>L</i> passes. It is called a <i>pseudo</i>-likelihood because the terms are "
-        "conditionals that are each computed with the remainder of the sequence visible, so their "
-        "sum is not the true joint log-probability log&nbsp;<i>P</i>(<i>x</i>) \u2014 a masked "
-        "language model never provides that quantity directly. Dividing by <i>L</i> makes "
-        "sequences of different length comparable in principle, though a length trend remains in "
-        "practice, which is why the controls are length-matched. Values are negative by "
-        "construction, since they are logarithms of probabilities; a PLL of \u22121.7 corresponds "
-        "to the model assigning the observed residue a probability of about <i>e</i><sup>\u22121.7</sup> "
-        "\u2248 0.18 on average, while \u22122.7 corresponds to about 0.07.", "eqnote")]
+        "where <i>x</i><sub>&#8722;i</sub> denotes the sequence with position <i>i</i> replaced "
+        "by a mask token, so one forward pass is required per position. It is a "
+        "<i>pseudo</i>-likelihood because the terms are conditionals computed with the "
+        "remainder of the sequence visible, and their sum is therefore not the true joint "
+        "log-probability log&nbsp;<i>P</i>(<i>x</i>) \u2014 a quantity a masked language model "
+        "never provides directly. Values are negative by construction: a PLL of \u22121.7 "
+        "corresponds to the model assigning the observed residue a probability of roughly 0.18 "
+        "on average, while \u22122.7 corresponds to about 0.07.", "eqnote")]
     f += [P(
         "Interpreting the resulting score requires care, which is why the test is constructed "
         "around controls. Pseudo-likelihood varies systematically with sequence length, and "
@@ -517,48 +512,25 @@ def build():
         "Structure is the most conserved level at which two proteins may resemble one another. "
         "Folds persist across evolutionary distances at which sequence similarity has decayed "
         "entirely, and a predicted structure matching a known toxin or virulence scaffold would "
-        "therefore constitute meaningful evidence even in the complete absence of a sequence hit. "
-        "<b>AlphaFold 3</b>" + c("abramson2024", "jumper2021") + " predicts three-dimensional "
-        "structure from sequence, and reports confidence in two ways, both of which are used "
-        "here. <b>pLDDT</b> scores confidence per residue on a 0–100 scale, where values "
-        "above 70 are generally considered reliable and values below 50 often indicate genuine "
-        "disorder rather than mere failure. <b>pTM</b> estimates confidence in the global "
-        "fold.", "body")]
+        "therefore constitute meaningful evidence even in the complete absence of a sequence "
+        "hit. <b>AlphaFold 3</b>" + c("abramson2024", "jumper2021") + " predicts "
+        "three-dimensional structure from sequence, and reports confidence in two ways.", "body")]
     f += [P(
-        "Both acronyms are worth unpacking, because they measure different things and the "
-        "distinction bears directly on the result reported in §7. <b>pLDDT</b> denotes "
-        "<i>predicted Local Distance Difference Test</i>. The underlying lDDT metric compares a "
-        "predicted structure against a reference by asking, for each atom, what fraction of its "
-        "interatomic distances to nearby atoms are reproduced within a tolerance — a "
-        "superposition-free measure, and therefore one not thrown off by a hinge or a badly "
-        "placed domain some distance away. AlphaFold cannot compute lDDT in the absence of a "
-        "reference structure, and is accordingly trained to <i>predict</i> what its own lDDT "
-        "score would be, per residue, on a 0–100 scale. A pLDDT of 85 is thus the model's "
-        "estimate that the local geometry about that residue is approximately 85% correct.", "body")]
-    f += [P(
-        "The crucial point is that pLDDT is a <i>local</i> quantity. It scores the model's "
-        "confidence in a residue's immediate geometric environment, and not in where that piece "
-        "sits within the whole. A single well-formed α-helix, floating free of any domain, "
-        "may therefore score above 90 while possessing no tertiary structure whatsoever — "
-        "which is precisely what is observed for ORF3 and ORF5. Low pLDDT is likewise "
-        "informative rather than merely uninformative: values below approximately 50 correlate "
-        "strongly with genuine intrinsic disorder, and so frequently indicate a region that has "
-        "no single structure rather than a region on which the model has failed.", "eqnote")]
-    f += [P(
-        "<b>pTM</b> denotes <i>predicted Template Modelling score</i>, and measures the "
-        "complementary, global property. The TM-score compares two structures following optimal "
-        "superposition, running from 0 to 1, where values above roughly 0.5 indicate the same "
-        "overall fold. It is computed from the distances between aligned residue pairs once the "
-        "two structures have been superposed, normalised by a length-dependent factor that keeps "
-        "the score comparable across proteins of differing size.", "body")]
-    f += [P(
-        "As with lDDT, no true structure is available at prediction time, and pTM is therefore "
-        "the model's estimate of what the TM-score would be. Because it is a global measure, pTM "
-        "remains low for a structure possessing confident local geometry but no defined overall "
-        "shape — and a lone helix is exactly that case. AlphaFold additionally reports "
+        "<b>pLDDT</b> (<i>predicted Local Distance Difference Test</i>) scores confidence per "
+        "residue on a 0–100 scale, where values above 70 are generally considered reliable "
+        "and values below 50 often indicate genuine disorder rather than mere failure. "
+        "<b>pTM</b> (<i>predicted Template Modelling score</i>) estimates confidence in the "
+        "global fold, running from 0 to 1, where values above roughly 0.5 indicate a "
+        "well-defined overall shape. The distinction between them bears directly on the result "
+        "reported in §7: pLDDT is a <i>local</i> quantity, scoring a residue's immediate "
+        "geometric environment rather than where that piece sits within the whole, whereas pTM "
+        "is global. A single well-formed α-helix floating free of any domain may therefore "
+        "score above 90 on pLDDT while possessing no tertiary structure whatsoever, and low pTM "
+        "is what registers the difference — which is precisely what is observed for ORF3 "
+        "and ORF5. AlphaFold additionally reports "
         "<font face='Courier' size='8'>fraction_disordered</font>, the proportion of the chain "
-        "it judges to be disordered, which is how a model may be confident per residue and "
-        "disordered overall at one and the same time.", "eqnote")]
+        "it judges disordered, which is how a model may be confident per residue and disordered "
+        "overall at one and the same time.", "body")]
     f += [P(
         "One feature of how AlphaFold operates proved as informative as the structures it "
         "returned. The model does not predict from a single sequence in isolation; it first "
