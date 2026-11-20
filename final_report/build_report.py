@@ -477,9 +477,9 @@ def build():
         "distances to nearby atoms are reproduced within a tolerance \u2014 a superposition-free "
         "measure, so it is not thrown off by a hinge or a badly placed domain far away. AlphaFold "
         "cannot compute lDDT without a reference structure, so it is trained to <i>predict</i> "
-        "what its own lDDT score would be, per residue, on a 0\u2013100 scale:", "body")]
-    f += [P("pLDDT<sub>i</sub> &nbsp;\u2248&nbsp; expected lDDT of residue <i>i</i> "
-            "against the true structure", "eq")]
+        "what its own lDDT score would be, per residue, on a 0\u2013100 scale. A pLDDT of 85 is "
+        "therefore the model\u2019s estimate that the local geometry around that residue is "
+        "about 85% correct.", "body")]
     f += [P(
         "The crucial point is that pLDDT is <i>local</i>. It scores how confident the model is "
         "about a residue's immediate geometric environment, not about where that piece sits in "
@@ -493,15 +493,11 @@ def build():
         "<b>pTM</b> stands for <i>predicted Template Modelling score</i>, and measures the "
         "complementary, global property. The TM-score compares two structures after optimal "
         "superposition, running from 0 to 1, where values above roughly 0.5 indicate the same "
-        "overall fold:", "body")]
-    f += [P("TM-score &nbsp;=&nbsp; max &nbsp;(1/<i>L</i>) &nbsp;\u03a3<sub>i</sub>&nbsp; "
-            "1 / (&thinsp;1 + (<i>d</i><sub>i</sub> / <i>d</i><sub>0</sub>)<sup>2</sup>&thinsp;)",
-            "eq")]
+        "overall fold. It is computed from the distances between aligned residue pairs once the "
+        "two structures have been optimally superposed, normalised by a length-dependent factor "
+        "that keeps the score comparable across proteins of different size.", "body")]
     f += [P(
-        "where <i>d</i><sub>i</sub> is the distance between the <i>i</i>-th pair of aligned "
-        "residues after superposition and <i>d</i><sub>0</sub> is a length-dependent "
-        "normalisation that keeps the score comparable across proteins of different size; the "
-        "maximum is taken over superpositions. As with lDDT, no true structure is available at "
+        "As with lDDT, no true structure is available at "
         "prediction time, so pTM is the model's estimate of what the TM-score would be. Because "
         "it is a global measure, pTM stays low for a structure with confident local geometry but "
         "no defined overall shape \u2014 and a lone helix is exactly that case. AlphaFold also "
