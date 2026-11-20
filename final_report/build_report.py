@@ -62,6 +62,13 @@ S = {
     "ref": ParagraphStyle("ref", parent=ss["Normal"], fontName="Helvetica",
                           fontSize=8.2, leading=11.0, textColor=INK_2,
                           spaceAfter=3.6, leftIndent=14, firstLineIndent=-14),
+    "eq": ParagraphStyle("eq", parent=ss["Normal"], fontName="Times-Italic",
+                         fontSize=11, leading=17, textColor=INK, alignment=1,
+                         spaceBefore=9, spaceAfter=9),
+    "eqnote": ParagraphStyle("eqnote", parent=ss["Normal"], fontName="Helvetica",
+                             fontSize=8.2, leading=11.4, textColor=INK_2,
+                             alignment=TA_JUSTIFY, leftIndent=16, rightIndent=16,
+                             spaceAfter=9),
     "key": ParagraphStyle("key", parent=ss["Normal"], fontName="Helvetica",
                           fontSize=9.6, leading=13.6, textColor=INK,
                           alignment=TA_JUSTIFY, spaceAfter=7,
@@ -423,6 +430,25 @@ def build():
         "<b>pseudo-log-likelihood</b> measures how unsurprising the sequence is to a model that "
         "has learned what natural proteins look like. Real proteins score high because their "
         "residues sit in contexts evolution has produced repeatedly; random sequence scores low.", "body")]
+    f += [P("Formally, for a sequence <i>x</i> = <i>x</i><sub>1</sub>\u2026<i>x</i><sub>L</sub> "
+            "of length <i>L</i>, the per-residue pseudo-log-likelihood is", "body")]
+    f += [P("PLL(<i>x</i>) &nbsp;=&nbsp; (1/<i>L</i>) &nbsp;\u03a3<sub>i=1..L</sub>&nbsp; "
+            "log&nbsp;<i>P</i>(&thinsp;<i>x</i><sub>i</sub> &nbsp;|&nbsp; "
+            "<i>x</i><sub>&#8722;i</sub>&thinsp;)", "eq")]
+    f += [P(
+        "where <i>x</i><sub>&#8722;i</sub> denotes the sequence with position <i>i</i> replaced by "
+        "a mask token, and <i>P</i>(<i>x</i><sub>i</sub> | <i>x</i><sub>&#8722;i</sub>) is the "
+        "model's probability for the residue actually observed there, given the rest of the "
+        "sequence. One forward pass is required per position, so a sequence of length <i>L</i> "
+        "costs <i>L</i> passes. It is called a <i>pseudo</i>-likelihood because the terms are "
+        "conditionals that are each computed with the remainder of the sequence visible, so their "
+        "sum is not the true joint log-probability log&nbsp;<i>P</i>(<i>x</i>) \u2014 a masked "
+        "language model never provides that quantity directly. Dividing by <i>L</i> makes "
+        "sequences of different length comparable in principle, though a length trend remains in "
+        "practice, which is why the controls are length-matched. Values are negative by "
+        "construction, since they are logarithms of probabilities; a PLL of \u22121.7 corresponds "
+        "to the model assigning the observed residue a probability of about <i>e</i><sup>\u22121.7</sup> "
+        "\u2248 0.18 on average, while \u22122.7 corresponds to about 0.07.", "eqnote")]
     f += [P(
         "Interpreting the score requires care, which is why the test is built around controls. "
         "Pseudo-likelihood varies systematically with sequence length, so every control was "
@@ -443,6 +469,45 @@ def build():
         "both used here. <b>pLDDT</b> scores confidence per residue on a 0\u2013100 scale, where "
         "above 70 is generally considered reliable and below 50 often indicates genuine disorder "
         "rather than mere failure. <b>pTM</b> estimates confidence in the global fold.", "body")]
+    f += [P(
+        "Both acronyms are worth unpacking, because they measure different things and the "
+        "distinction matters for the result in \u00a78. <b>pLDDT</b> stands for <i>predicted "
+        "Local Distance Difference Test</i>. The underlying lDDT metric compares a predicted "
+        "structure to a reference by asking, for each atom, what fraction of its interatomic "
+        "distances to nearby atoms are reproduced within a tolerance \u2014 a superposition-free "
+        "measure, so it is not thrown off by a hinge or a badly placed domain far away. AlphaFold "
+        "cannot compute lDDT without a reference structure, so it is trained to <i>predict</i> "
+        "what its own lDDT score would be, per residue, on a 0\u2013100 scale:", "body")]
+    f += [P("pLDDT<sub>i</sub> &nbsp;\u2248&nbsp; expected lDDT of residue <i>i</i> "
+            "against the true structure", "eq")]
+    f += [P(
+        "The crucial point is that pLDDT is <i>local</i>. It scores how confident the model is "
+        "about a residue's immediate geometric environment, not about where that piece sits in "
+        "the whole. A single, well-formed \u03b1-helix floating free of any domain can therefore "
+        "score above 90 while having no tertiary structure whatsoever \u2014 which is precisely "
+        "what happens with ORF3 and ORF5. Low pLDDT is also informative rather than merely "
+        "uninformative: values below about 50 correlate strongly with genuine intrinsic disorder, "
+        "so they often indicate a region that has no single structure rather than a region the "
+        "model failed on.", "eqnote")]
+    f += [P(
+        "<b>pTM</b> stands for <i>predicted Template Modelling score</i>, and measures the "
+        "complementary, global property. The TM-score compares two structures after optimal "
+        "superposition, running from 0 to 1, where values above roughly 0.5 indicate the same "
+        "overall fold:", "body")]
+    f += [P("TM-score &nbsp;=&nbsp; max &nbsp;(1/<i>L</i>) &nbsp;\u03a3<sub>i</sub>&nbsp; "
+            "1 / (&thinsp;1 + (<i>d</i><sub>i</sub> / <i>d</i><sub>0</sub>)<sup>2</sup>&thinsp;)",
+            "eq")]
+    f += [P(
+        "where <i>d</i><sub>i</sub> is the distance between the <i>i</i>-th pair of aligned "
+        "residues after superposition and <i>d</i><sub>0</sub> is a length-dependent "
+        "normalisation that keeps the score comparable across proteins of different size; the "
+        "maximum is taken over superpositions. As with lDDT, no true structure is available at "
+        "prediction time, so pTM is the model's estimate of what the TM-score would be. Because "
+        "it is a global measure, pTM stays low for a structure with confident local geometry but "
+        "no defined overall shape \u2014 and a lone helix is exactly that case. AlphaFold also "
+        "reports <font face='Courier' size='8'>fraction_disordered</font>, the proportion of the "
+        "chain it judges disordered, which is how a model can be confident per residue and "
+        "disordered overall at the same time.", "eqnote")]
     f += [P(
         "One feature of how AlphaFold works turned out to be as informative as the structures it "
         "returned. The model does not predict from a single sequence alone; it first searches "
