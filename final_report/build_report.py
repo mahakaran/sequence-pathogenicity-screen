@@ -605,11 +605,13 @@ def build():
         ["jackhmmer ×5 iter.", "Swiss-Prot (569,192)", "E < 0.001", "0  (best E = 0.7, ORF1)"],
     ], [92, 132, 62, FRAME_W - 286])]
     f += [P(
-        "No search returned a significant hit. The jackhmmer result is the most informative: "
-        "because no sequence cleared the inclusion threshold on any iteration, no profile was "
-        "ever built, and each search converged immediately on the query alone. An iterative "
-        "profile method that cannot recruit a single relative from Swiss-Prot is strong "
-        "evidence that no detectable homolog exists there.", "body")]
+        "No search returned a significant hit. Of the four, the jackhmmer result is the most "
+        "informative, and it is worth stating why. Because no sequence cleared the inclusion "
+        "threshold on any iteration, no profile was ever built, and each search therefore "
+        "converged immediately upon the query alone. An iterative profile method that cannot "
+        "recruit even a single relative from Swiss-Prot constitutes strong evidence that no "
+        "detectable homologue exists there — not merely that none aligns directly, but "
+        "that none is reachable through intermediates either.", "body")]
 
     # ------------------------------------------------------- 2 taxonomy
     f += [P("2 · Taxonomic classification", "h1")]
@@ -985,43 +987,48 @@ def build():
         "the evidence is that it shows no signature of pathogenicity, and no signature of "
         "natural origin either.</b>", "key")]
     f += [P(
-        "Eight independent lines of evidence converge. The sequence has no BLASTn hit, no "
-        "Kraken2 classification in either of two databases (0 of 254 k-mers), no DIAMOND "
-        "alignment to Swiss-Prot or VFDB, and no jackhmmer profile recruitment over five "
-        "iterations. Its nearest neighbours in protein language-model embedding space are "
-        "explicable by length and composition alone, and none of them aligns to it. Its "
-        "encoded peptides score as no more protein-like than their own "
-        "shuffled residues. AlphaFold 3 independently finds no homolog for the two peptides it can "
-        "model confidently — an MSA of depth 1, the query alone — and predicts no folded domain "
-        "for any of the five.", "body")]
+        "Eight independent lines of evidence converge upon this conclusion. The sequence "
+        "returns no BLASTn hit, no Kraken2 classification in either of two databases (0 of 254 "
+        "k-mers), no DIAMOND alignment to Swiss-Prot or to VFDB, and no jackhmmer profile "
+        "recruitment over five iterations. Its nearest neighbours in protein language-model "
+        "embedding space are explicable by length and composition alone, and none of them "
+        "aligns to it. Its encoded peptides score as no more protein-like than their own "
+        "shuffled residues. AlphaFold 3 independently finds no homologue for the two peptides "
+        "it is able to model confidently (an MSA of depth 1, which is to say the query alone), "
+        "and predicts no folded domain for any of the five.", "body")]
     f += [P(
         "Against this uniformly negative background, the codon analysis supplies the one "
-        "positive finding. ORF4 uses exactly one codon for every multi-codon amino acid "
-        "(ENC = 20.0, the theoretical floor), back-translating its protein with that 19-entry "
-        "table reproduces the 288 bp exactly, and the three codons whose reverse complements "
-        "are stop codons are avoided entirely — which is precisely what allows both strands to "
-        "remain open across the full length. No natural coding sequence behaves this way. "
-        "<b>The sequence was designed, by back-translation from a protein sequence, under a "
-        "constraint that kept both reading frames open.</b>", "body")]
+        "positive finding, and it proves to be the decisive one. ORF4 employs exactly one codon "
+        "for every multi-codon amino acid (ENC = 20.0, the theoretical floor); back-translating "
+        "its protein with that 19-entry table reproduces the 288 bp exactly; and the three "
+        "codons whose reverse complements are stop codons are avoided entirely, which is "
+        "precisely the constraint that permits both strands to remain open across the full "
+        "length. No natural coding sequence behaves in this manner. <b>The sequence was "
+        "designed, by back-translation from a protein sequence, under a constraint that kept "
+        "both reading frames open.</b>", "body")]
     f += [P(
-        "This explains the pattern of results rather than merely restating it. Nucleotide-level "
-        "methods fail because the codon table was chosen rather than inherited, so no natural "
-        "k-mer history exists to match. Protein-level methods fail because the encoded peptides "
-        "have no natural relatives. Embedding methods return neighbours because they must "
-        "return something, and in the absence of homology they return sequences of similar size "
-        "and composition.", "body")]
+        "It is worth emphasising that this finding explains the pattern of results rather than "
+        "merely restating it. Nucleotide-level methods fail because the codon table was chosen "
+        "rather than inherited, with the consequence that no natural k-mer history exists "
+        "against which to match. Protein-level methods fail because the encoded peptides have "
+        "no natural relatives to recover. Embedding methods return neighbours because the "
+        "geometry of the space obliges them to return something, and in the absence of genuine "
+        "homology what they return is sequences of similar size and composition.", "body")]
     f += [P(
-        "For biosecurity purposes the operative conclusion is a limitation rather than a "
-        "clearance. Every screening resource applied here detects hazard by resemblance to "
-        "catalogued examples, and this sequence resembles nothing catalogued. A designed "
-        "sequence with no natural homolog is invisible to homology-based screening whether it "
-        "is benign or not. Structure prediction, added here, narrows this less than might be "
-        "hoped: AlphaFold returns no fold to compare against catalogued hazards, and the one "
-        "confidently predicted feature — a transmembrane-like helix in ORF5 — is shared by "
-        "pore-forming toxins and ordinary membrane proteins alike. Establishing what, if "
-        "anything, these peptides do would require evidence this analysis cannot provide: a "
-        "structural similarity search that the present models cannot support, and ultimately "
-        "experimental characterisation.", "body")]
+        "For biosecurity purposes, the operative conclusion is therefore a limitation rather "
+        "than a clearance, and the distinction is not a semantic one. Every screening resource "
+        "applied here detects hazard by resemblance to catalogued examples, and this sequence "
+        "resembles nothing catalogued. It follows that a designed sequence possessing no "
+        "natural homologue is invisible to homology-based screening whether it is benign or "
+        "otherwise — the screen cannot distinguish the two cases, because both present as "
+        "silence. Structure prediction, added here precisely in the hope of circumventing this "
+        "problem, narrows it less than one might wish: AlphaFold returns no fold to compare "
+        "against catalogued hazards, and the single confidently predicted feature (a "
+        "transmembrane-like helix in ORF5) is shared by pore-forming toxins and entirely "
+        "ordinary membrane proteins alike. Establishing what, if anything, these peptides "
+        "actually do would require evidence this analysis cannot supply: a structural "
+        "similarity search that the present models cannot support, and ultimately experimental "
+        "characterisation.", "body")]
 
     # ------------------------------------------------------- appendix
     f += [P("Appendix · Software and data", "h1")]
