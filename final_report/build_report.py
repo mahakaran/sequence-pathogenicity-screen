@@ -562,7 +562,8 @@ def build():
         "(<font face='Courier' size='8'>esm2_t33_650M_UR50D</font>), mean-pooling the final "
         "layer over residue positions with the <font face='Courier' size='8'>&lt;cls&gt;</font> "
         "and <font face='Courier' size='8'>&lt;eos&gt;</font> tokens excluded. This convention "
-        "was verified against a supplied Swiss-Prot embedding set by re-embedding six proteins "
+        "was verified against a precomputed Swiss-Prot embedding set (Zenodo record 22935411) "
+        "by re-embedding six proteins "
         "and confirming cosine identity of 1.000000. The supplied set covered 540,881 proteins "
         "but contained no viral entries; the 20,960 missing proteins embedded here (including "
         "12,841 of 17,148 viral entries) were computed with the same convention and merged, "
@@ -857,7 +858,7 @@ def build():
          "warrant confirmation at higher n before being relied on quantitatively. The original "
          "design specified n = 100; this was reduced for runtime."),
         ("The reference embedding set was incomplete and partly recomputed",
-         "The supplied Swiss-Prot embeddings excluded all 17,148 viral proteins and ~11,000 "
+         "The precomputed Swiss-Prot embeddings excluded all 17,148 viral proteins and ~11,000 "
          "others. Of the 28,311 missing, 20,960 were embedded here and merged; the run was "
          "stopped early, leaving 4,307 viral and ~3,000 other proteins (all ≥515 aa) absent. "
          "Since the ORFs are 25–96 aa, the omitted long proteins are unlikely to affect "
@@ -951,7 +952,9 @@ def build():
         ["Kraken2 databases", "Standard-8 and PlusPF-8, 2026-10-22 builds"],
         ["VFDB", "set A core dataset, retrieved 2026-11-19 (4,755 proteins)"],
         ["InterPro", "entry.list, 3,519 homologous-superfamily entries"],
-        ["Swiss-Prot reference", "DS569k (569,192 proteins); 561,841 embedded"],
+        ["Swiss-Prot reference", "DS569k (569,192 proteins); 561,841 embedded \u2014 "
+                                 "huggingface.co/datasets/donnyb/DS569k"],
+        ["Precomputed embeddings", "zenodo.org/records/22935411"],
         ["UMAP / FAISS", "umap-learn with FAISS HNSW precomputed kNN"],
         ["Alignment", "Biopython PairwiseAligner, BLOSUM62, gaps −11/−1"],
         ["AlphaFold", "AlphaFold 3 server, 5 seeds per ORF"],

@@ -9,6 +9,7 @@
 # ---------------------------------------------------------------------------
 
 # Reference sequence database (419 MB; exceeds GitHub's 100 MB file limit)
+# https://huggingface.co/datasets/donnyb/DS569k
 DS569k.parquet
 
 # Kraken2 databases (~22 GB) - download from the Kraken2 index page
@@ -18,7 +19,8 @@ kraken/kraken_db/
 esm_embedding/model_650m/
 esm_embedding/pretrained/
 
-# Precomputed Swiss-Prot embeddings (~2.8 GB) - supplied with the exercise
+# Precomputed Swiss-Prot embeddings (~2.8 GB)
+# https://zenodo.org/records/22935411
 esm_embedding/downloaded_embeddings/
 esm_embedding/esm_embeddings/
 

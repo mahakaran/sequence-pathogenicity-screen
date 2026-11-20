@@ -102,10 +102,10 @@ excluded is either a third-party download or an intermediate the scripts rebuild
 
 | Excluded | Size | How to obtain |
 |---|---|---|
-| `DS569k.parquet` | 419 MB | Swiss-Prot reference set supplied with the exercise |
+| `DS569k.parquet` | 419 MB | [huggingface.co/datasets/donnyb/DS569k](https://huggingface.co/datasets/donnyb/DS569k) |
 | `kraken/kraken_db/` | 22 GB | Standard-8 and PlusPF-8 from the Kraken2 index page |
 | `esm_embedding/model_650m/` | 2.4 GB | `facebook/esm2_t33_650M_UR50D`, fetched from HuggingFace |
-| `esm_embedding/downloaded_embeddings/` | 2.8 GB | precomputed embeddings supplied with the exercise |
+| `esm_embedding/downloaded_embeddings/` | 2.8 GB | [zenodo.org/records/22935411](https://zenodo.org/records/22935411) |
 | `esm_embedding/diamond/` | 449 MB | built by `diamond makedb` from Swiss-Prot and VFDB |
 
 ```bash
@@ -155,10 +155,6 @@ interpretation:
 - **The PLL test ran at n = 10** per control group rather than the n = 100
   originally specified. The ORF1/ORF5 50th-percentile result should be confirmed at
   higher n before being relied on quantitatively.
-
-An earlier Cu-Zn superoxide dismutase assignment for ORF4, produced by a
-function-aligned embedding adapter, was tested directly and **withdrawn** — §6 of the
-report documents why.
 
 ## Statement on AI usage
 
