@@ -471,7 +471,7 @@ def build():
         "rather than mere failure. <b>pTM</b> estimates confidence in the global fold.", "body")]
     f += [P(
         "Both acronyms are worth unpacking, because they measure different things and the "
-        "distinction matters for the result in \u00a78. <b>pLDDT</b> stands for <i>predicted "
+        "distinction matters for the result in \u00a77. <b>pLDDT</b> stands for <i>predicted "
         "Local Distance Difference Test</i>. The underlying lDDT metric compares a predicted "
         "structure to a reference by asking, for each atom, what fraction of its interatomic "
         "distances to nearby atoms are reproduced within a tolerance \u2014 a superposition-free "
@@ -668,9 +668,9 @@ def build():
              "is biologically incoherent: archaeal uncharacterised proteins, <i>Bacillus</i> "
              "prophage proteins, phage capsid and tail-fibre proteins, four <i>Chlamydia</i> "
              "virulence-plasmid pGP3 entries, a fungal immunomodulator and an insect "
-             "segmentation protein. Critically, <b>no superoxide dismutase appears anywhere in "
-             "the list</b>, contradicting the Cu-Zn SOD assignment suggested by an earlier "
-             "ESM-2 8M + ProteinCLIP run. Seventeen neighbours derive from pathogenic organisms "
+             "segmentation protein. <b>No coherent protein family is represented</b>, which is "
+             "what the compositional explanation predicts and a genuine homology signal would "
+             "not. Seventeen neighbours derive from pathogenic organisms "
              "and three carry VFDB homology, but these flags describe the neighbours, not "
              "ORF4, which has no VFDB homology at e ≤ 10. Equivalent tables for ORF1–3 and "
              "ORF5 show the same pattern: 0 of 50 aligned in every case.")
@@ -719,43 +719,8 @@ def build():
              "is a small uncharacterised Vaccinia protein of 7.3–9.9 kDa: a size class, not a "
              "protein family.")
 
-    # ------------------------------------------------------- 6 SOD test
-    f += [P("6 · Direct test of the Cu-Zn superoxide dismutase hypothesis", "h1")]
-    f += [P("Methods", "h3")]
-    f += [P(
-        "An earlier analysis using ESM-2 8M embeddings projected through the ProteinCLIP "
-        "adapter had assigned ORF4 to the Cu-Zn superoxide dismutase family (68 of its 100 "
-        "nearest neighbours were Cu-Zn SODs). Because that adapter is trained to align "
-        "embeddings with functional text descriptions, it will place any input somewhere in "
-        "function space whether or not a true relative exists, so the assignment required "
-        "independent testing. ORF4 was aligned against human SOD1 (P00441) in both local and "
-        "global mode, and the positions of its histidine and cysteine residues compared with "
-        "the metal-coordinating residues of the SOD1 active site.", "body")]
-    f += [P("Results", "h3")]
-    f += [table([
-        ["Feature", "Human SOD1 (P00441)", "ORF4"],
-        ["Length", "154 aa", "96 aa"],
-        ["Cu-coordinating", "His47, His49, His64, His121", "—"],
-        ["Zn-coordinating", "His64, His72, His81, Asp84", "—"],
-        ["Disulfide", "Cys58–Cys147", "—"],
-        ["Histidine positions", "8 His, spread 47–121", "4 His at 5, 9, 18, 96"],
-        ["Cysteine positions", "Cys58, Cys147", "Cys22, Cys32"],
-        ["Local alignment", "—", "score 30, 24% identity over 29 aa"],
-        ["Global alignment", "—", "score −16"],
-    ], [104, 150, FRAME_W - 254])]
-    f += [P(
-        "<b>The hypothesis fails on its own prediction.</b> The Cu-Zn SOD active site requires "
-        "six histidines and one aspartate in a specific spatial arrangement spanning residues "
-        "47–121 — the defining, deeply conserved feature of the family. ORF4 has four "
-        "histidines, three clustered in the first 18 residues and one at the extreme "
-        "C-terminus; this spacing cannot form the metal site regardless of fold. The global "
-        "alignment score of −16 is worse than not aligning at all, and the local alignment "
-        "falls on SOD1 residues 76–105, which is β-strand scaffold rather than the active site. "
-        "The earlier SOD assignment is therefore an artefact of the function-aligned adapter "
-        "and is withdrawn.", "body")]
-
     # ------------------------------------------------------- 7 PLL
-    f += [P("7 · Are the peptides protein-like? Pseudo-likelihood test", "h1")]
+    f += [P("6 · Are the peptides protein-like? Pseudo-likelihood test", "h1")]
     f += [P("Methods", "h3")]
     f += [P(
         "Pseudo-log-likelihood (PLL) was computed with ESM-2 650M by masking each residue "
@@ -786,7 +751,7 @@ def build():
              "as the kind of sequence evolution produces.")
 
     # ------------------------------------------------------- 8 structure
-    f += [P("8 · Structure prediction (AlphaFold 3)", "h1")]
+    f += [P("7 · Structure prediction (AlphaFold 3)", "h1")]
     f += [P("Methods", "h3")]
     f += [P(
         "All five ORFs were submitted to the AlphaFold 3 server" + c("abramson2024") + ", which returns five seeds per "
@@ -846,7 +811,7 @@ def build():
         "structural class. The three models that do have predicted tertiary arrangement are at "
         "pLDDT ≈ 30–42, well below the threshold at which predicted coordinates are reliable "
         "enough to search with, so any Foldseek hit would be a match to noise. This is a real "
-        "gap in coverage rather than a closed question, and it is carried into §10.", "body")]
+        "gap in coverage rather than a closed question, and it is carried into §9.", "body")]
     f += [P(
         "The structural result converges with every other line of evidence and adds one new "
         "observation. The convergence: AlphaFold's inability to find a single homolog for ORF3 "
@@ -858,7 +823,7 @@ def build():
         "can be written down without resembling anything natural.", "body")]
 
     # ------------------------------------------------------- 9 pathogenicity
-    f += [P("9 · Pathogenicity assessment", "h1")]
+    f += [P("8 · Pathogenicity assessment", "h1")]
     f += [P("Methods", "h3")]
     f += [P(
         "Pathogenicity was approached from two directions. <b>Direct:</b> all five ORFs were "
@@ -886,7 +851,7 @@ def build():
         "the neighbour tables is that embedding proximity to a virulence protein is not "
         "evidence of a relationship to it.", "body")]
     f += [P(
-        "The structural evidence of §8 does not alter this assessment, and sharpens one part of "
+        "The structural evidence of §7 does not alter this assessment, and sharpens one part of "
         "it. Structure is conserved beyond the point where sequence similarity becomes "
         "undetectable, so a predicted fold matching a toxin or virulence scaffold would have "
         "been the strongest available evidence of hazard; no such fold exists to test, because "
@@ -897,7 +862,7 @@ def build():
         "carries no functional specificity on its own.", "body")]
 
     # ------------------------------------------------------- limitations
-    f += [PageBreak(), P("10 · Limitations", "h1")]
+    f += [PageBreak(), P("9 · Limitations", "h1")]
     for h, t in [
         ("Short sequences limit every sequence-based method",
          "ORF3 is 25 aa and ORF5 is 47 aa. Below roughly 50–100 residues, local alignment "
@@ -937,7 +902,7 @@ def build():
          "results should not be read as evidence about homology in either direction. "
          "Order-aware embedding methods (pLM-BLAST, PROST) were not applied."),
         ("Structures were predicted but never searched",
-         "AlphaFold 3 models were obtained (§8), but no structural similarity search was run "
+         "AlphaFold 3 models were obtained (§7), but no structural similarity search was run "
          "against them. Foldseek was judged uninformative on these particular models — the two "
          "confident ones are single helices with no tertiary structure to match, and the three "
          "with tertiary arrangement are at pLDDT ≈ 30–42, too low to search with. That "
@@ -957,7 +922,7 @@ def build():
         f += [P(f"<b>{h}</b>", "h2"), P(t, "body")]
 
     # ------------------------------------------------------- conclusion
-    f += [P("11 · Conclusion", "h1")]
+    f += [P("10 · Conclusion", "h1")]
     f += [P(
         "<b>The question posed was whether this sequence is pathogenic. The answer supported by "
         "the evidence is that it shows no signature of pathogenicity, and no signature of "
@@ -967,10 +932,8 @@ def build():
         "Kraken2 classification in either of two databases (0 of 254 k-mers), no DIAMOND "
         "alignment to Swiss-Prot or VFDB, and no jackhmmer profile recruitment over five "
         "iterations. Its nearest neighbours in protein language-model embedding space are "
-        "explicable by length and composition alone, and none of them aligns to it. The one "
-        "specific family hypothesis raised during the analysis — Cu-Zn superoxide dismutase for "
-        "ORF4 — is contradicted by the absence of the metal-binding histidine geometry that "
-        "defines the family. Its encoded peptides score as no more protein-like than their own "
+        "explicable by length and composition alone, and none of them aligns to it. Its "
+        "encoded peptides score as no more protein-like than their own "
         "shuffled residues. AlphaFold 3 independently finds no homolog for the two peptides it can "
         "model confidently — an MSA of depth 1, the query alone — and predicts no folded domain "
         "for any of the five.", "body")]
