@@ -302,134 +302,185 @@ def build():
 
     f += [P("Why a sequence is interrogated at several levels at once", "h2")]
     f += [P(
-        "A nucleotide sequence can be related to something known in several different ways, and "
-        "a method that detects one kind of relatedness is often blind to another. DNA accumulates "
-        "silent changes quickly, so two genes with a shared ancestor can become unrecognisable at "
-        "the nucleotide level while the proteins they encode remain obviously similar. Protein "
-        "sequence in turn diverges faster than the three-dimensional fold it adopts, so structure "
-        "can preserve a signal of common ancestry long after sequence alignment fails. Each method "
-        "below therefore samples a different and partly independent layer of evidence, which is "
-        "what makes their agreement meaningful.", "body")]
+        "Homology, the descent of two sequences from a common ancestor, is not a single "
+        "observable but a claim that leaves traces at several levels of biological organisation "
+        "simultaneously. Crucially, these traces decay at very different rates. DNA accumulates "
+        "silent substitutions rapidly, so two genes sharing an ancestor can become entirely "
+        "unrecognisable at the nucleotide level while the proteins they encode remain obviously "
+        "similar. Protein sequence in turn diverges faster than the three-dimensional fold it "
+        "adopts, which is why structure can preserve a signal of common ancestry long after "
+        "sequence alignment has ceased to detect anything. It therefore stands to reason that a "
+        "method operating at one level may be entirely blind to a relationship that is plainly "
+        "visible at another.", "body")]
+    f += [P(
+        "This observation motivates the design of the present analysis. Rather than apply a "
+        "single method and treat its output as decisive, I interrogated the query at three "
+        "levels of abstraction (i.e., the nucleotides themselves, the translated peptides, and "
+        "learned representations of protein space), such that each analysis samples a different "
+        "and only partly dependent layer of evidence. The value of this design is asymmetric. A "
+        "positive result from any single method would be informative on its own; a negative "
+        "result from any single method would not, because it would remain consistent with a "
+        "relationship visible only at some other level. It is the <i>convergence</i> of "
+        "negatives across all three levels that carries weight, and it is for this reason that "
+        "the methods below are presented as a ladder rather than a list.", "body")]
 
     f += [P("Homology search: BLASTn, DIAMOND blastp and jackhmmer", "h2")]
     f += [P(
-        "Homology search asks whether a query resembles anything in a reference database more "
-        "closely than chance would allow. <b>BLASTn</b> compares nucleotides." + c("altschul1990", "camacho2009") + " It does not attempt "
-        "a full comparison against every sequence, which would be prohibitive; instead it finds "
-        "short exact matches (\u2018words\u2019, here set to 7 nt for sensitivity on a short "
-        "query), and extends those seeds outwards into longer gapped alignments, keeping the "
-        "high-scoring ones. Each surviving alignment is assigned an <b>E-value</b>: the number of "
-        "alignments that good one would expect to see by chance in a database of that size. An "
-        "E-value of 10 means ten such hits are expected by chance alone and the result is "
-        "meaningless; 1e\u221250 means chance is not a plausible explanation." + c("karlin1990"), "body")]
+        "Intuitively, homology search is defined as the problem of determining whether a query "
+        "sequence resembles anything in a reference database more closely than chance alone "
+        "would permit. The qualifier is essential: any two sequences of sufficient length will "
+        "align <i>somewhere</i>, and the task is therefore not to find an alignment but to "
+        "establish that a given alignment is improbable under a null model of unrelated "
+        "sequence. The three methods used here share this logic, and differ in the alphabet over "
+        "which they operate and in the richness of the model they bring to bear.", "body")]
     f += [P(
-        "<b>DIAMOND blastp</b> applies the same seed-and-extend logic to translated protein "
-        "sequence" + c("buchfink2021") + ", and this is usually far more sensitive for coding regions. The reason is that "
-        "protein comparison can be chemically informed: rather than scoring a match as simply "
-        "right or wrong, it uses a substitution matrix (BLOSUM62)" + c("henikoff1992") + " in which replacing leucine with "
-        "isoleucine \u2014 chemically similar, routinely interchanged in evolution \u2014 scores "
-        "nearly as well as a match, while replacing leucine with aspartate is penalised. Two "
-        "proteins can therefore be recognised as related at 25% identity, where the underlying "
-        "DNA retains no detectable similarity at all. DIAMOND is an accelerated implementation of "
-        "this search, which is what makes searching every ORF against all of Swiss-Prot "
-        "practical.", "body")]
+        "<b>BLASTn</b>" + c("altschul1990", "camacho2009") + " operates on nucleotides. An "
+        "exhaustive comparison of the query against every database sequence would be "
+        "computationally prohibitive, so BLASTn proceeds heuristically: it first identifies "
+        "short exact matches (‘words’, here set to 7 nt to maximise sensitivity on a "
+        "short query), and then extends these seeds outwards into longer gapped alignments, "
+        "retaining those that score highly. Each surviving alignment is assigned an "
+        "<b>E-value</b>, defined as the number of alignments of at least that quality one would "
+        "expect to observe by chance in a database of the given size." + c("karlin1990") + " More "
+        "concretely, an E-value of 10 indicates that ten such hits are expected from chance "
+        "alone, and the result is therefore meaningless; an E-value of 1e−50 indicates that "
+        "chance is not a plausible explanation.", "body")]
     f += [P(
-        "<b>jackhmmer</b> goes further still, and is the most sensitive sequence method used here." + c("eddy2011", "johnson2010") + " "
-        "A pairwise search treats every position in a protein as equally important, which is "
-        "wrong: real protein families have a few positions that are absolutely conserved, often "
-        "catalytic or structural, and many that tolerate almost anything. jackhmmer builds a "
-        "<b>profile hidden Markov model</b> that captures this, recording position-by-position "
-        "which residues are acceptable and how tolerant each site is to insertion or deletion. It "
-        "searches with that profile, adds whatever it finds above a strict threshold, rebuilds the "
-        "profile from the enlarged set, and repeats. Because each iteration can recruit sequences "
-        "through intermediates, it detects relationships far too remote for any direct pairwise "
-        "comparison. A jackhmmer search that recruits nothing over five iterations is a strong "
-        "negative: it means no sequence in the database could be reached even through a chain of "
+        "<b>DIAMOND blastp</b>" + c("buchfink2021") + " applies the same seed-and-extend logic to "
+        "translated protein sequence, and is for coding regions considerably the more sensitive "
+        "approach. The reason is that comparison at the amino acid level can be chemically "
+        "informed. Rather than scoring a match as simply correct or incorrect, DIAMOND employs a "
+        "substitution matrix (BLOSUM62)" + c("henikoff1992") + ", in which the replacement of "
+        "leucine by isoleucine (chemically similar, and routinely interchanged over evolutionary "
+        "time) scores nearly as well as an exact match, whereas the replacement of leucine by "
+        "aspartate is penalised. Two proteins may therefore be recognised as related at 25% "
+        "identity, at which point the underlying DNA retains no detectable similarity "
+        "whatsoever. DIAMOND is an accelerated implementation of this search, which is what "
+        "renders a comparison of every ORF against the whole of Swiss-Prot practical.", "body")]
+    f += [P(
+        "<b>jackhmmer</b>" + c("eddy2011", "johnson2010") + " extends the approach further still, "
+        "and is the most sensitive sequence-based method employed here. Pairwise search treats "
+        "every position in a protein as equally informative, which is biologically incorrect: "
+        "real protein families possess a small number of positions that are absolutely conserved "
+        "(often catalytic or structural) alongside many that tolerate almost any residue. "
+        "jackhmmer captures this heterogeneity by constructing a <b>profile hidden Markov "
+        "model</b>, which records, position by position, which residues are acceptable and how "
+        "tolerant each site is to insertion or deletion. It then searches the database with that "
+        "profile, admits whatever clears a strict inclusion threshold, rebuilds the profile from "
+        "the enlarged set, and iterates.", "body")]
+    f += [P(
+        "The consequence of this iterative procedure is that homologues may be recruited "
+        "<i>through intermediates</i>: a sequence too remote to align directly against the query "
+        "may nonetheless align against a profile built from sequences that themselves aligned to "
+        "it. jackhmmer therefore detects relationships well beyond the reach of any direct "
+        "pairwise comparison, and a search that recruits nothing over five iterations is "
+        "correspondingly strong evidence of absence. It establishes not merely that no database "
+        "sequence resembles the query, but that none can be reached even through a chain of "
         "intermediate relatives.", "body")]
 
     f += [P("Taxonomic classification: Kraken2", "h2")]
     f += [P(
-        "Homology search asks what a sequence is related to; taxonomic classification asks where "
-        "it came from. <b>Kraken2</b> takes a different approach from alignment entirely." + c("wood2019") + " It "
-        "breaks a query into every overlapping subsequence of fixed length (here 35 nt, called "
-        "<b>k-mers</b>) and looks each one up in a precomputed hash table mapping k-mers to the "
-        "genomes containing them. Each k-mer votes for a taxon, and the query is assigned to the "
-        "lowest common ancestor consistent with those votes. The method is exact-match and so "
-        "extremely fast, but correspondingly brittle: it cannot recognise a diverged relative, "
-        "only near-identical sequence. Its value here is as a clean test of a specific "
-        "proposition \u2014 that the sequence comes from some organism already sequenced. A "
-        "result of zero classified k-mers across two databases means no 35 nt window of the query "
-        "appears in any catalogued genome.", "body")]
+        "Where homology search asks what a sequence is related to, taxonomic classification asks "
+        "a narrower and more concrete question: from which organism did it come? "
+        "<b>Kraken2</b>" + c("wood2019") + " approaches this without recourse to alignment at "
+        "all. It decomposes the query into every overlapping subsequence of fixed length (here "
+        "35 nt, termed <b>k-mers</b>) and looks each one up in a precomputed hash table mapping "
+        "k-mers to the genomes in which they occur. Each k-mer thereby casts a vote for a taxon, "
+        "and the query is assigned to the lowest common ancestor consistent with the votes "
+        "cast.", "body")]
+    f += [P(
+        "Because matching is exact, the method is extremely fast but correspondingly brittle: it "
+        "cannot recognise a diverged relative, only near-identical sequence. This brittleness is "
+        "precisely what makes it useful here, since it constitutes a clean test of a sharply "
+        "defined proposition, namely that the query derives from an organism that has already "
+        "been sequenced. A result of zero classified k-mers across two databases establishes "
+        "that no 35 nt window of the query appears in any catalogued genome.", "body")]
 
     f += [P("Nucleotide composition and codon usage", "h2")]
     f += [P(
-        "Genomes imprint statistical signatures on their genes, and these persist independently of "
-        "what any individual gene does. <b>GC content</b> \u2014 the proportion of G and C bases "
-        "\u2014 varies widely and characteristically between organisms, from roughly 25% in some "
-        "<i>Plasmodium</i> species to over 70% in some actinobacteria. <b>CpG frequency</b> (a "
-        "cytosine followed immediately by a guanine) is strongly suppressed in vertebrate genomes" + c("bird1980", "greenbaum2008") + " "
-        "and in many viruses that infect them, because methylated cytosine in that context "
-        "deaminates to thymine and the dinucleotide is slowly lost; the degree of suppression is "
-        "itself informative about host.", "body")]
+        "Genomes imprint statistical signatures upon their genes, and these signatures persist "
+        "independently of what any individual gene does. <b>GC content</b>, the proportion of G "
+        "and C bases, varies widely and characteristically between organisms, ranging from "
+        "roughly 25% in some <i>Plasmodium</i> species to above 70% in certain actinobacteria. "
+        "<b>CpG frequency</b> (a cytosine followed immediately by a guanine) is strongly "
+        "suppressed in vertebrate genomes and in many of the viruses that infect "
+        "them" + c("bird1980", "greenbaum2008") + ", because methylated cytosine in that context "
+        "deaminates to thymine and the dinucleotide is progressively lost; the degree of "
+        "suppression is itself informative as to host.", "body")]
     f += [P(
-        "<b>Codon usage</b> is the most discriminating of these signals. The genetic code is "
-        "redundant: most amino acids are specified by two to six different codons, and which one "
-        "an organism prefers is shaped by the abundance of its tRNAs and by mutational bias. These "
-        "preferences are measurable and species-characteristic" + c("ikemura1985", "karlin1997") + ", which is why codon usage can "
-        "suggest a source organism even without homology. Two summary statistics are used here. "
-        "The <b>effective number of codons (ENC)</b> ranges from 61" + c("wright1990") + ", meaning all synonymous codons "
-        "are used equally, down to 20, meaning exactly one codon is used per amino acid; real "
-        "genes typically fall between 30 and 55. The <b>codon adaptation index (CAI)</b> measures" + c("sharp1987") + " "
-        "how closely a gene's choices match the preferred codons of a reference genome. This "
-        "analysis is the only one in the report that returned a positive finding, and the one that "
-        "ultimately explains the rest.", "body")]
+        "<b>Codon usage</b> is the most discriminating of these signals, and it is worth setting "
+        "out why. The genetic code is redundant: most amino acids are specified by between two "
+        "and six distinct codons, and which of them an organism prefers is shaped both by the "
+        "abundance of its tRNA pool and by mutational bias. These preferences are measurable and "
+        "species-characteristic" + c("ikemura1985", "karlin1997") + ", which is what allows codon "
+        "usage to implicate a source organism even in the complete absence of homology. Two "
+        "summary statistics are employed here. The <b>effective number of codons (ENC)</b> "
+        "ranges from 61, where all synonymous codons are used with equal frequency, down to 20, "
+        "where exactly one codon is used per amino acid" + c("wright1990") + "; real genes "
+        "typically fall between 30 and 55. The <b>codon adaptation index (CAI)</b> measures how "
+        "closely the codon choices of a gene match the preferred codons of a reference "
+        "genome" + c("sharp1987") + ". This analysis proved to be the only one in the present "
+        "work to return a positive finding, and, as will become apparent, the one that "
+        "ultimately explains the remainder.", "body")]
 
     f += [P("Protein language-model embedding", "h2")]
     f += [P(
-        "Protein language models are trained on tens of millions of natural protein sequences with "
-        "a simple objective: predict residues that have been hidden. Succeeding at this requires "
-        "the model to internalise a great deal of implicit biology, because which residue belongs "
-        "at a hidden position depends on its structural environment, on the residues it contacts, "
-        "and on what the protein does. <b>ESM-2</b> is such a model" + c("lin2023", "rives2021") + ", and a sequence passed through "
-        "it yields an <b>embedding</b>: a fixed-length vector (1,280 numbers for the 650M-parameter "
-        "model used here) summarising what the model has inferred about that protein.", "body")]
+        "Protein language models are trained on tens of millions of natural protein sequences "
+        "under a deceptively simple objective: to predict residues that have been masked. "
+        "Succeeding at this task requires the model to internalise a great deal of implicit "
+        "biology, because which residue belongs at a hidden position depends on its structural "
+        "environment, on the residues with which it is in contact, and on what the protein does. "
+        "<b>ESM-2</b>" + c("lin2023", "rives2021") + " is such a model, and a sequence passed "
+        "through it yields an <b>embedding</b>: a fixed-length vector (1,280 numbers for the "
+        "650M-parameter model used here) summarising what the model has inferred about that "
+        "protein.", "body")]
     f += [P(
-        "The useful property is that these vectors arrange themselves meaningfully. Proteins "
-        "sharing structure or function land near one another even when their sequences have "
-        "diverged past the point where alignment detects anything, so nearest-neighbour search in "
-        "embedding space can reveal functional relationships invisible to BLAST or even to profile "
-        "methods. The method's weakness matters as much as its strength, and is central to §5 of "
-        "this report: embeddings are produced by averaging over residue positions, which discards "
-        "order. For short or low-complexity sequences the average is dominated by amino-acid "
-        "composition, so a query will always have nearest neighbours \u2014 the geometry "
-        "guarantees it \u2014 whether or not any real relationship exists. Proximity in embedding "
-        "space is therefore a hypothesis to be tested, not a result.", "body")]
+        "The property that makes embeddings useful is that these vectors arrange themselves "
+        "meaningfully in the space they occupy. Proteins sharing structure or function come to "
+        "lie near one another even where their sequences have diverged past the point at which "
+        "alignment detects anything, and nearest-neighbour search in embedding space can "
+        "therefore reveal functional relationships invisible to BLAST or even to profile "
+        "methods.", "body")]
+    f += [P(
+        "The weakness of the method matters as much as its strength, and is central to the "
+        "interpretation offered in §5. Embeddings are produced by averaging over residue "
+        "positions, an operation which necessarily discards order. For short or low-complexity "
+        "sequences the resulting average is dominated by amino-acid composition. The "
+        "consequence is that a query will always possess nearest neighbours, since the geometry "
+        "of the space guarantees as much, whether or not any real relationship exists. Proximity "
+        "in embedding space is therefore properly regarded as a hypothesis requiring "
+        "independent test, and not as a result in itself.", "body")]
 
     f += [P("Pairwise alignment of flagged neighbours", "h2")]
     f += [P(
-        "That test is the purpose of the pairwise alignment step. Every embedding neighbour "
-        "originating from a pathogenic or venomous organism, or itself matching a curated "
-        "virulence factor, was realigned to the query using full <b>Smith-Waterman</b> local "
-        "alignment" + c("smith1981") + " \u2014 the exact optimal algorithm, rather than the heuristic DIAMOND uses, so "
-        "that weak similarity cannot be missed through approximation. The crucial element is how "
-        "significance is judged. Each alignment score was compared against a null distribution "
-        "built by shuffling the query two thousand times and realigning each shuffle. Shuffling "
-        "preserves amino-acid composition exactly while destroying order, so a pair that scores "
-        "well merely because both sequences are, say, hydrophobic will score just as well against "
-        "the shuffles and yield a non-significant result. This directly separates genuine "
-        "homology from compositional coincidence, which is precisely the confound that mean-pooled "
-        "embeddings introduce.", "body")]
+        "Supplying that independent test is the purpose of the pairwise alignment step. Every "
+        "embedding neighbour originating from a pathogenic or venomous organism, or itself "
+        "matching a curated virulence factor, was realigned against the query using full "
+        "<b>Smith-Waterman</b> local alignment" + c("smith1981") + " — that is, the exact "
+        "optimal algorithm rather than the heuristic DIAMOND employs, so that weak similarity "
+        "cannot be missed through approximation.", "body")]
+    f += [P(
+        "The crucial element, however, is the manner in which significance is judged. Each "
+        "alignment score was compared against a null distribution constructed by shuffling the "
+        "query two thousand times and realigning each shuffle in turn. Shuffling preserves "
+        "amino-acid composition exactly while destroying order, with the result that a pair "
+        "scoring well merely because both sequences are, say, hydrophobic will score equally "
+        "well against the shuffles and yield a non-significant p-value. The test thereby "
+        "separates genuine homology from compositional coincidence, which is precisely the "
+        "confound that mean-pooled embeddings introduce.", "body")]
 
     f += [P("Pseudo-likelihood: is the sequence protein-like at all?", "h2")]
     f += [P(
-        "Every method described so far asks what the query resembles. The pseudo-likelihood test "
-        "asks something different and more fundamental: whether these peptides look like proteins "
-        "at all, independent of any particular relative. The procedure masks each residue position "
-        "in turn and records the model's probability for the residue actually present, then "
-        "averages the log of those probabilities across the sequence." + c("salazar2020", "meier2021") + " The resulting "
-        "<b>pseudo-log-likelihood</b> measures how unsurprising the sequence is to a model that "
-        "has learned what natural proteins look like. Real proteins score high because their "
-        "residues sit in contexts evolution has produced repeatedly; random sequence scores low.", "body")]
+        "Every method described thus far asks what the query resembles. The pseudo-likelihood "
+        "test asks something different, and arguably more fundamental: whether these peptides "
+        "resemble proteins <i>at all</i>, independently of any particular relative. The "
+        "procedure masks each residue position in turn, records the probability the model "
+        "assigns to the residue actually present, and averages the logarithm of those "
+        "probabilities across the sequence." + c("salazar2020", "meier2021") + " The resulting "
+        "<b>pseudo-log-likelihood</b> is best understood as a measure of how unsurprising a "
+        "sequence is to a model that has learned what natural proteins look like. Real proteins "
+        "score highly because their residues sit in contexts evolution has produced repeatedly; "
+        "random sequence scores poorly.", "body")]
     f += [P("Formally, for a sequence <i>x</i> = <i>x</i><sub>1</sub>\u2026<i>x</i><sub>L</sub> "
             "of length <i>L</i>, the per-residue pseudo-log-likelihood is", "body")]
     f += [P("PLL(<i>x</i>) &nbsp;=&nbsp; (1/<i>L</i>) &nbsp;\u03a3<sub>i=1..L</sub>&nbsp; "
@@ -450,80 +501,86 @@ def build():
         "to the model assigning the observed residue a probability of about <i>e</i><sup>\u22121.7</sup> "
         "\u2248 0.18 on average, while \u22122.7 corresponds to about 0.07.", "eqnote")]
     f += [P(
-        "Interpreting the score requires care, which is why the test is built around controls. "
-        "Pseudo-likelihood varies systematically with sequence length, so every control was "
-        "length-matched to the ORF it is compared against. Four control groups were used: real "
-        "Swiss-Prot proteins of matched length as a positive control, those same proteins with "
-        "residues shuffled, uniform random sequence, and \u2014 the strictest test \u2014 the "
-        "ORF's own residues shuffled. That last control holds amino-acid composition exactly "
-        "constant and varies only the order, so it isolates the question of whether the "
-        "<i>arrangement</i> of residues is protein-like rather than merely the ingredients.", "body")]
+        "Interpreting the resulting score requires care, which is why the test is constructed "
+        "around controls. Pseudo-likelihood varies systematically with sequence length, and "
+        "every control was therefore length-matched to the ORF against which it is compared. "
+        "Four control groups were used: real Swiss-Prot proteins of matched length, serving as "
+        "the positive control; those same proteins with their residues shuffled; uniform random "
+        "sequence over the twenty amino acids; and — the strictest of the four — the "
+        "ORF's own residues shuffled. This last control holds amino-acid composition exactly "
+        "constant and varies only the order, and therefore isolates the question of whether the "
+        "<i>arrangement</i> of residues is protein-like, rather than merely the ingredients "
+        "from which it is composed.", "body")]
 
     f += [P("Structure prediction", "h2")]
     f += [P(
-        "Structure is the most conserved level at which two proteins can resemble each other. "
+        "Structure is the most conserved level at which two proteins may resemble one another. "
         "Folds persist across evolutionary distances at which sequence similarity has decayed "
-        "entirely, so a predicted structure matching a known toxin or virulence scaffold would be "
-        "meaningful evidence even with no sequence hit anywhere. <b>AlphaFold 3</b> predicts "
-        "three-dimensional structure from sequence" + c("abramson2024", "jumper2021") + ", and reports confidence in two ways that are "
-        "both used here. <b>pLDDT</b> scores confidence per residue on a 0\u2013100 scale, where "
-        "above 70 is generally considered reliable and below 50 often indicates genuine disorder "
-        "rather than mere failure. <b>pTM</b> estimates confidence in the global fold.", "body")]
+        "entirely, and a predicted structure matching a known toxin or virulence scaffold would "
+        "therefore constitute meaningful evidence even in the complete absence of a sequence hit. "
+        "<b>AlphaFold 3</b>" + c("abramson2024", "jumper2021") + " predicts three-dimensional "
+        "structure from sequence, and reports confidence in two ways, both of which are used "
+        "here. <b>pLDDT</b> scores confidence per residue on a 0–100 scale, where values "
+        "above 70 are generally considered reliable and values below 50 often indicate genuine "
+        "disorder rather than mere failure. <b>pTM</b> estimates confidence in the global "
+        "fold.", "body")]
     f += [P(
         "Both acronyms are worth unpacking, because they measure different things and the "
-        "distinction matters for the result in \u00a77. <b>pLDDT</b> stands for <i>predicted "
-        "Local Distance Difference Test</i>. The underlying lDDT metric compares a predicted "
-        "structure to a reference by asking, for each atom, what fraction of its interatomic "
-        "distances to nearby atoms are reproduced within a tolerance \u2014 a superposition-free "
-        "measure, so it is not thrown off by a hinge or a badly placed domain far away. AlphaFold "
-        "cannot compute lDDT without a reference structure, so it is trained to <i>predict</i> "
-        "what its own lDDT score would be, per residue, on a 0\u2013100 scale. A pLDDT of 85 is "
-        "therefore the model\u2019s estimate that the local geometry around that residue is "
-        "about 85% correct.", "body")]
+        "distinction bears directly on the result reported in §7. <b>pLDDT</b> denotes "
+        "<i>predicted Local Distance Difference Test</i>. The underlying lDDT metric compares a "
+        "predicted structure against a reference by asking, for each atom, what fraction of its "
+        "interatomic distances to nearby atoms are reproduced within a tolerance — a "
+        "superposition-free measure, and therefore one not thrown off by a hinge or a badly "
+        "placed domain some distance away. AlphaFold cannot compute lDDT in the absence of a "
+        "reference structure, and is accordingly trained to <i>predict</i> what its own lDDT "
+        "score would be, per residue, on a 0–100 scale. A pLDDT of 85 is thus the model's "
+        "estimate that the local geometry about that residue is approximately 85% correct.", "body")]
     f += [P(
-        "The crucial point is that pLDDT is <i>local</i>. It scores how confident the model is "
-        "about a residue's immediate geometric environment, not about where that piece sits in "
-        "the whole. A single, well-formed \u03b1-helix floating free of any domain can therefore "
-        "score above 90 while having no tertiary structure whatsoever \u2014 which is precisely "
-        "what happens with ORF3 and ORF5. Low pLDDT is also informative rather than merely "
-        "uninformative: values below about 50 correlate strongly with genuine intrinsic disorder, "
-        "so they often indicate a region that has no single structure rather than a region the "
-        "model failed on.", "eqnote")]
+        "The crucial point is that pLDDT is a <i>local</i> quantity. It scores the model's "
+        "confidence in a residue's immediate geometric environment, and not in where that piece "
+        "sits within the whole. A single well-formed α-helix, floating free of any domain, "
+        "may therefore score above 90 while possessing no tertiary structure whatsoever — "
+        "which is precisely what is observed for ORF3 and ORF5. Low pLDDT is likewise "
+        "informative rather than merely uninformative: values below approximately 50 correlate "
+        "strongly with genuine intrinsic disorder, and so frequently indicate a region that has "
+        "no single structure rather than a region on which the model has failed.", "eqnote")]
     f += [P(
-        "<b>pTM</b> stands for <i>predicted Template Modelling score</i>, and measures the "
-        "complementary, global property. The TM-score compares two structures after optimal "
+        "<b>pTM</b> denotes <i>predicted Template Modelling score</i>, and measures the "
+        "complementary, global property. The TM-score compares two structures following optimal "
         "superposition, running from 0 to 1, where values above roughly 0.5 indicate the same "
         "overall fold. It is computed from the distances between aligned residue pairs once the "
-        "two structures have been optimally superposed, normalised by a length-dependent factor "
-        "that keeps the score comparable across proteins of different size.", "body")]
+        "two structures have been superposed, normalised by a length-dependent factor that keeps "
+        "the score comparable across proteins of differing size.", "body")]
     f += [P(
-        "As with lDDT, no true structure is available at "
-        "prediction time, so pTM is the model's estimate of what the TM-score would be. Because "
-        "it is a global measure, pTM stays low for a structure with confident local geometry but "
-        "no defined overall shape \u2014 and a lone helix is exactly that case. AlphaFold also "
-        "reports <font face='Courier' size='8'>fraction_disordered</font>, the proportion of the "
-        "chain it judges disordered, which is how a model can be confident per residue and "
-        "disordered overall at the same time.", "eqnote")]
+        "As with lDDT, no true structure is available at prediction time, and pTM is therefore "
+        "the model's estimate of what the TM-score would be. Because it is a global measure, pTM "
+        "remains low for a structure possessing confident local geometry but no defined overall "
+        "shape — and a lone helix is exactly that case. AlphaFold additionally reports "
+        "<font face='Courier' size='8'>fraction_disordered</font>, the proportion of the chain "
+        "it judges to be disordered, which is how a model may be confident per residue and "
+        "disordered overall at one and the same time.", "eqnote")]
     f += [P(
-        "One feature of how AlphaFold works turned out to be as informative as the structures it "
-        "returned. The model does not predict from a single sequence alone; it first searches "
-        "databases for homologs and builds a multiple-sequence alignment, extracting constraints "
-        "from patterns of correlated variation across relatives. The <b>depth</b> of that "
-        "alignment \u2014 how many homologs were found \u2014 is reported with the result, and "
-        "constitutes an independent homology search against databases different from those used in "
-        "§1.", "body")]
+        "One feature of how AlphaFold operates proved as informative as the structures it "
+        "returned. The model does not predict from a single sequence in isolation; it first "
+        "searches databases for homologues and assembles a multiple-sequence alignment, from "
+        "which it extracts constraints encoded in patterns of correlated variation across "
+        "relatives. The <b>depth</b> of that alignment, which is to say how many homologues were "
+        "found, is reported alongside the result, and therefore constitutes an independent "
+        "homology search conducted against databases different from those used in §1.", "body")]
 
     f += [P("Pathogenicity assessment", "h2")]
     f += [P(
-        "Pathogenicity was assessed directly and indirectly. The direct test searched all five "
-        "ORFs against <b>VFDB</b>" + c("chen2005", "liu2022") + ", a curated database of experimentally characterised bacterial "
-        "virulence factors \u2014 toxins, adhesins, secretion-system components and the like. The "
-        "indirect test examined the 250 nearest embedding neighbours, classifying each by whether "
-        "its source organism is a human pathogen or venomous species and whether the protein "
-        "itself matches VFDB, then subjecting every flagged pair to the alignment test described "
-        "above. Both routes share a limitation that the conclusion of this report returns to: they "
-        "detect hazard by resemblance to hazards already catalogued, and can say nothing about a "
-        "sequence that resembles nothing on record.", "body")]
+        "Pathogenicity was assessed both directly and indirectly. The direct test searched all "
+        "five ORFs against <b>VFDB</b>" + c("chen2005", "liu2022") + ", a curated database of "
+        "experimentally characterised bacterial virulence factors — toxins, adhesins, "
+        "secretion-system components and the like. The indirect test examined the 250 nearest "
+        "embedding neighbours, classifying each according to whether its source organism is a "
+        "human pathogen or venomous species and whether the protein itself matches VFDB, and "
+        "then subjected every flagged pair to the alignment test described above.", "body")]
+    f += [P(
+        "Both routes share a limitation to which the conclusion of this report returns at "
+        "length. They detect hazard by resemblance to hazards already catalogued, and can "
+        "therefore say nothing whatever about a sequence that resembles nothing on record.", "body")]
 
     # ------------------------------------------------------- 1 homology
     f += [P("1 · Homology search", "h1")]
